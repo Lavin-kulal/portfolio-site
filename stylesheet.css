@@ -1,0 +1,100 @@
+body{
+    padding: 0%;
+    margin: 0%;
+}
+.main-header{
+    /* background-color: aqua; */
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+}
+.navigation-div2{
+    background: rgb(6 25 120);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.logo img{
+    width: 70px;
+    border-radius: 50px;
+
+}
+.nav-buttons ul {
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.nav-buttons ul a{
+    text-decoration: none;
+    font-size: 30px;
+    padding: 2rem;
+    color: white;
+    text-transform: capitalize;
+}
+.profile-divInner{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.my-info {
+    width: 40%;
+    padding: 2rem;
+    color: #040473;
+
+}
+.my-photo img {
+    width: 15rem;
+    border-radius: 50%;
+}
+.box{
+    border-radius: 2px solid black;
+}
+.box-info{
+    color: #06067b;
+}
+.box img{
+    width: 15rem;
+    border: 2px solid black;
+    border-radius: 15px;
+    box-shadow: 2px 2px #c3baba;
+}
+.work{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ededed;
+
+}
+.boxes{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    width: 70%;
+}
+.socials{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgb(6 25 120);
+}
+.social-info h1{
+    text-align: center;
+    color: white;
+}
+.socila-links{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+ .links{
+        padding: 2rem;
+        text-decoration: none;
+        color: white;
+}
+.socials p{
+    color: white;
+}
