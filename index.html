@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -85,5 +85,738 @@
         </section>
     </div>
     
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laveen Kumar - Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4c5a6b2c4a.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            top: 20%;
+            left: 10%;
+        }
+
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #feca57, #ff9ff3);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+            bottom: 20%;
+            right: 10%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Navigation */
+        .main-navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .navigation-div2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-buttons a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-buttons a:hover::before {
+            left: 100%;
+        }
+
+        .nav-buttons a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Main Container */
+        .main-container {
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .main-profile {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+        }
+
+        .profile-divInner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            align-items: center;
+        }
+
+        .my-info {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .my-info h2 {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .my-info h1 {
+            color: #fff;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .my-info .role {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .tech-tag {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .my-info p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .my-photo {
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .my-photo img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .my-photo::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+            border-radius: 50%;
+            z-index: 1;
+            animation: rotate 10s linear infinite;
+            opacity: 0.7;
+        }
+
+        .my-photo:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Work Section */
+        .main-work {
+            padding: 6rem 2rem;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .work {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .box-info {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .box-info h1 {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .box:hover img {
+            transform: scale(1.1);
+        }
+
+        .box-content {
+            padding: 1.5rem;
+        }
+
+        .box-title {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .box-desc {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .main-socials {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #0d1117 0%, #21262d 100%);
+        }
+
+        .socials {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-info h1 {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .links:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .links i {
+            font-size: 1.5rem;
+        }
+
+        .email {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-divInner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .my-info h1 {
+                font-size: 2.5rem;
+            }
+
+            .my-photo img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .nav-buttons ul {
+                gap: 1rem;
+            }
+
+            .boxes {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="bg-animation"></div>
+    
+    <div class="main-container">
+        <header class="main-navigation">
+            <div class="navigation-div2">
+                <a href="#home" class="logo">Laveen Kumar</a>
+                <nav class="nav-buttons">
+                    <ul>
+                        <li><a href="#about-trigger">About</a></li>
+                        <li><a href="#work-trigger">Work</a></li>
+                        <li><a href="#contact-trigger">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section id="about-trigger" class="main-profile">
+            <div class="profile-divInner">
+                <div class="my-info">
+                    <h2>Hey, I am</h2>
+                    <h1>LAVEEN KUMAR</h1>
+                    <div class="role">Full Stack Developer</div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                    
+                    <p>Passionate full-stack developer specializing in MERN stack with TypeScript. I build scalable web applications using modern technologies and deploy them on AWS cloud services. Every complex problem has an elegant solution waiting to be discovered.</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="#work-trigger" class="btn-primary">
+                            <i class="fas fa-rocket"></i> View My Work
+                        </a>
+                        <a href="#contact-trigger" class="btn-secondary">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="my-photo">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Laveen Kumar">
+                </div>
+            </div>
+        </section>
+
+        <section id="work-trigger" class="main-work">
+            <div class="work">
+                <div class="box-info animate-on-scroll">
+                    <h1>My Projects</h1>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem;">Here are some of my recent works using MERN stack and modern technologies</p>
+                </div>
+                
+                <div class="boxes">
+                    <div class="box animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=200&fit=crop" alt="E-commerce Platform">
+                        <div class="box-content">
+                            <div class="box-title">E-commerce Platform</div>
+                            <div class="box-desc">Full-stack e-commerce solution built with MERN stack, featuring payment integration, admin dashboard, and real-time inventory management.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="box animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop" alt="Analytics Dashboard">
+                        <div class="box-content">
+                            <div class="box-title">Analytics Dashboard</div>
+                            <div class="box-desc">React-based dashboard with TypeScript, featuring real-time data visualization, custom charts, and responsive design patterns.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="box animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop" alt="Social Media App">
+                        <div class="box-content">
+                            <div class="box-title">Social Media App</div>
+                            <div class="box-desc">Full-featured social platform with real-time messaging, file uploads, and AWS S3 integration for scalable media storage.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="box animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop" alt="Task Management">
+                        <div class="box-content">
+                            <div class="box-title">Task Management System</div>
+                            <div class="box-desc">Collaborative project management tool with drag-and-drop interface, team collaboration features, and AWS deployment.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="box animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=200&fit=crop" alt="API Gateway">
+                        <div class="box-content">
+                            <div class="box-title">Microservices API</div>
+                            <div class="box-desc">Scalable Node.js microservices architecture with TypeScript, Docker containerization, and AWS Lambda functions.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="box animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=200&fit=crop" alt="Real-time Chat">
+                        <div class="box-content">
+                            <div class="box-title">Real-time Chat App</div>
+                            <div class="box-desc">WebSocket-powered chat application with MongoDB persistence, JWT authentication, and responsive mobile design.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-trigger" class="main-socials">
+            <div class="socials">
+                <div class="social-info animate-on-scroll">
+                    <h1>Let's Build Something Amazing Together</h1>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 3rem;">Ready to bring your ideas to life with cutting-edge technology</p>
+                </div>
+                
+                <div class="social-links animate-on-scroll">
+                    <a class="links" href="https://github.com/Lavin-kulal" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a class="links" href="https://www.linkedin.com/in/laveen-kumar-36a340173/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a class="links" href="mailto:laveenk0032@gmail.com" target="_blank">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </a>
+                </div>
+                
+                <div class="email animate-on-scroll">
+                    <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                    laveenk0032@gmail.com
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursor.style.left = mouseX - 10 + 'px';
+            cursor.style.top = mouseY - 10 + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.main-navigation');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(13, 17, 23, 0.98)';
+            } else {
+                nav.style.background = 'rgba(13, 17, 23, 0.95)';
+            }
+        });
+
+        // Typing animation for name
+        const nameElement = document.querySelector('.my-info h1');
+        const nameText = 'LAVEEN KUMAR';
+        nameElement.innerHTML = '';
+        
+        setTimeout(() => {
+            let i = 0;
+            const typeWriter = () => {
+                if (i < nameText.length) {
+                    nameElement.innerHTML += nameText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            typeWriter();
+        }, 1000);
+
+        // Add hover effects to tech tags
+        document.querySelectorAll('.tech-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) rotate(2deg)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
 </body>
 </html>
