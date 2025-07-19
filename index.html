@@ -94,36 +94,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laveen Kumar - Full Stack Developer</title>
+    
+    <!-- Google Fonts for a modern, clean look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
     <script src="https://kit.fontawesome.com/4c5a6b2c4a.js" crossorigin="anonymous"></script>
+    
     <style>
+        /* --- CSS STYLES --- */
+
+        /* 1. Global Reset & Body Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0d1117; /* Dark background inspired by GitHub */
+            color: #c9d1d9;
+            cursor: none; /* Hide default cursor */
         }
 
-        /* Custom Cursor */
+        /* 2. Custom Cursor */
         .cursor {
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             border: 2px solid #fff;
             border-radius: 50%;
             position: fixed;
-            pointer-events: none;
+            pointer-events: none; /* Allows clicking through the cursor */
             z-index: 9999;
-            transition: transform 0.1s ease;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
             mix-blend-mode: difference;
         }
 
-        /* Animated Background */
+        body:hover .cursor {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Enlarge cursor on hover over links/buttons */
+        a:hover ~ .cursor, button:hover ~ .cursor, .box:hover ~ .cursor {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: rgba(255, 255, 255, 0.5);
+            border-width: 1px;
+        }
+
+        /* 3. Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -131,51 +157,53 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before,
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.2;
+            animation: float 15s ease-in-out infinite;
         }
 
         .bg-animation::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-            top: 20%;
+            top: 10%;
             left: 10%;
         }
 
         .bg-animation::after {
-            content: '';
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(45deg, #feca57, #ff9ff3);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
-            bottom: 20%;
+            bottom: 10%;
             right: 10%;
+            animation-delay: -7s;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            50% { transform: translateY(-40px) translateX(20px) rotate(180deg); }
         }
 
-        /* Navigation */
+        /* 4. Navigation Bar */
         .main-navigation {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(13, 17, 23, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(13, 17, 23, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 1rem 5%;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         .navigation-div2 {
             display: flex;
             justify-content: space-between;
@@ -196,11 +224,11 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 3px;
             bottom: -5px;
             left: 0;
             background: linear-gradient(90deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
         }
 
         .logo:hover::after {
@@ -214,56 +242,50 @@
         }
 
         .nav-buttons a {
-            color: #fff;
+            color: #c9d1d9;
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            padding: 0.5rem 0;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
-
+        
         .nav-buttons a::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.4s ease-in-out;
         }
 
         .nav-buttons a:hover::before {
-            left: 100%;
+            width: 100%;
         }
 
         .nav-buttons a:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
+            color: #fff;
         }
 
-        /* Main Container */
-        .main-container {
-            min-height: 100vh;
-        }
-
-        /* Hero Section */
+        /* 5. Hero Section (Main Profile) */
         .main-profile {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6rem 2rem 2rem;
+            padding: 6rem 5% 2rem;
             position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .profile-divInner {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 4rem;
-            max-width: 1200px;
             align-items: center;
         }
 
@@ -272,61 +294,57 @@
         }
 
         .my-info h2 {
-            color: rgba(255,255,255,0.8);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 400;
             margin-bottom: 0.5rem;
             animation: fadeInUp 1s ease-out 0.2s both;
+            color: #8b949e;
         }
 
         .my-info h1 {
             color: #fff;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
             font-weight: 700;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 5rem; /* Reserve space for typing animation */
+            display: inline-block;
+            background: linear-gradient(135deg, #c8d2ff 0%, #a3b0f5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         .my-info .role {
-            color: #fff;
             font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out 0.6s both;
+            color: #fff;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out 0.8s both;
         }
 
         .tech-tag {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            padding: 0.3rem 0.8rem;
+            background: rgba(255,255,255,0.08);
+            color: #c9d1d9;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s ease;
         }
 
-        .tech-tag:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
         .my-info p {
-            color: rgba(255,255,255,0.9);
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out 1s both;
+            max-width: 600px;
         }
 
         .cta-buttons {
@@ -347,11 +365,13 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            font-size: 1rem;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
         }
 
         .btn-secondary {
@@ -362,7 +382,7 @@
 
         .btn-primary:hover, .btn-secondary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .my-photo {
@@ -374,40 +394,41 @@
         }
 
         .my-photo img {
-            width: 350px;
-            height: 350px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
+            border: 5px solid rgba(255,255,255,0.1);
+            transition: all 0.5s ease;
             position: relative;
             z-index: 2;
-            object-position: center top;
+            object-position: center top; /* Adjust if your photo is cropped */
         }
-
+        
         .my-photo::before {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+            width: 320px;
+            height: 320px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #ff6b6b, #667eea);
+            background-size: 400% 400%;
             border-radius: 50%;
             z-index: 1;
-            animation: rotate 10s linear infinite;
-            opacity: 0.7;
+            animation: rotateGradient 10s linear infinite;
+            filter: blur(5px);
         }
 
         .my-photo:hover img {
             transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(118, 75, 162, 0.5);
         }
 
-        /* Work Section */
+        /* 6. Work Section */
         .main-work {
-            padding: 6rem 2rem;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
+            padding: 6rem 5%;
+            background: rgba(255,255,255,0.03);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .work {
@@ -429,30 +450,37 @@
 
         .boxes {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
 
         .box {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
         }
 
         .box:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.25);
+        }
+        
+        .box .img-wrapper {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
         }
 
         .box img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
         }
 
         .box:hover img {
@@ -465,21 +493,19 @@
 
         .box-title {
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .box-desc {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        /* Contact Section */
+        /* 7. Contact Section */
         .main-socials {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, #0d1117 0%, #21262d 100%);
+            padding: 6rem 5%;
         }
 
         .socials {
@@ -492,33 +518,44 @@
             color: #fff;
             font-size: 3rem;
             font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .social-info p {
+            font-size: 1.2rem;
             margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
 
         .links {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             padding: 1rem 2rem;
-            background: rgba(255,255,255,0.1);
-            color: #fff;
+            background: rgba(255,255,255,0.08);
+            color: #c9d1d9;
             text-decoration: none;
             border-radius: 30px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: 500;
         }
 
         .links:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-3px);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .links i {
@@ -526,68 +563,69 @@
         }
 
         .email {
-            color: rgba(255,255,255,0.8);
             font-size: 1.2rem;
             margin-top: 2rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .email a {
+            color: #c9d1d9;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .email a:hover {
+            color: #fff;
         }
 
-        /* Animations */
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
+        /* 8. Core Animations */
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes rotateGradient { 
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; } 
         }
 
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        /* 9. Responsive Design */
+        @media (max-width: 992px) {
             .profile-divInner {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 3rem;
                 text-align: center;
             }
-
-            .my-info h1 {
-                font-size: 2.5rem;
+            .my-info p, .my-info {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
             }
-
-            .my-photo img {
-                width: 250px;
-                height: 250px;
+            .cta-buttons, .tech-stack {
+                justify-content: center;
             }
-
-            .nav-buttons ul {
-                gap: 1rem;
-            }
-
-            .boxes {
-                grid-template-columns: 1fr;
-            }
-
-            .social-links {
-                flex-direction: column;
-                align-items: center;
+            .my-photo {
+                grid-row: 1; /* Move photo to the top on smaller screens */
             }
         }
+        
+        @media (max-width: 768px) {
+            body { cursor: auto; } /* Disable custom cursor on mobile for better UX */
+            .cursor { display: none; }
+            .nav-buttons { display: none; } /* Simplified nav for mobile, can add a hamburger menu later */
+            .my-info h1 { font-size: 2.8rem; }
+            .my-info .role { font-size: 1.5rem; }
+            .my-photo img { width: 250px; height: 250px; }
+            .my-photo::before { width: 270px; height: 270px; }
+            .box-info h1, .social-info h1 { font-size: 2.5rem; }
+            .boxes { grid-template-columns: 1fr; gap: 2rem; }
+        }
 
-        /* Scroll animations */
+        /* 10. Scroll animations Utility */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .animate-on-scroll.visible {
@@ -603,7 +641,7 @@
     <div class="main-container">
         <header class="main-navigation">
             <div class="navigation-div2">
-                <a href="#home" class="logo">Laveen Kumar</a>
+                <a href="#about-trigger" class="logo">Laveen Kumar</a>
                 <nav class="nav-buttons">
                     <ul>
                         <li><a href="#about-trigger">About</a></li>
@@ -614,213 +652,223 @@
             </div>
         </header>
 
-        <section id="about-trigger" class="main-profile">
-            <div class="profile-divInner">
-                <div class="my-info">
-                    <h2>Hey, I am</h2>
-                    <h1>LAVEEN KUMAR</h1>
-                    <div class="role">Full Stack Developer</div>
-                    
-                    <div class="tech-stack">
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Express.js</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">AWS</span>
+        <main>
+            <section id="about-trigger" class="main-profile">
+                <div class="profile-divInner">
+                    <div class="my-info">
+                        <h2>Hey, I am</h2>
+                        <h1>LAVEEN KUMAR</h1>
+                        <div class="role">Full Stack Developer</div>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        
+                        <p>A passionate full-stack developer specializing in the MERN stack and TypeScript. I architect and build scalable, high-performance web applications, leveraging modern cloud technologies to bring ideas to life. For me, every complex problem is an opportunity for an elegant solution.</p>
+                        
+                        <div class="cta-buttons">
+                            <a href="#work-trigger" class="btn-primary">
+                                <i class="fas fa-rocket"></i> View My Work
+                            </a>
+                            <a href="mailto:laveenk0032@gmail.com" class="btn-secondary">
+                                <i class="fas fa-envelope"></i> Get In Touch
+                            </a>
+                        </div>
                     </div>
                     
-                    <p>Passionate full-stack developer specializing in MERN stack with TypeScript. I build scalable web applications using modern technologies and deploy them on AWS cloud services. Every complex problem has an elegant solution waiting to be discovered.</p>
-                    
-                    <div class="cta-buttons">
-                        <a href="#work-trigger" class="btn-primary">
-                            <i class="fas fa-rocket"></i> View My Work
-                        </a>
-                        <a href="#contact-trigger" class="btn-secondary">
-                            <i class="fas fa-envelope"></i> Get In Touch
-                        </a>
+                    <div class="my-photo">
+                        <!-- IMPORTANT: Replace this with your actual image path -->
+                        <img src="./images/profile.jpg" alt="Laveen Kumar - Full Stack Developer">
                     </div>
                 </div>
-                
-                <div class="my-photo">
-                    <img src="./images/profile.jpg" alt="Laveen Kumar - Full Stack Developer">
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="work-trigger" class="main-work">
-            <div class="work">
-                <div class="box-info animate-on-scroll">
-                    <h1>My Projects</h1>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem;">Here are some of my recent works using MERN stack and modern technologies</p>
-                </div>
-                
-                <div class="boxes">
-                    <div class="box animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=200&fit=crop" alt="E-commerce Platform">
-                        <div class="box-content">
-                            <div class="box-title">E-commerce Platform</div>
-                            <div class="box-desc">Full-stack e-commerce solution built with MERN stack, featuring payment integration, admin dashboard, and real-time inventory management.</div>
-                        </div>
+            <section id="work-trigger" class="main-work">
+                <div class="work">
+                    <div class="box-info animate-on-scroll">
+                        <h1>My Projects</h1>
+                        <p>A selection of my recent work, showcasing my skills in building modern web applications.</p>
                     </div>
                     
-                    <div class="box animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop" alt="Analytics Dashboard">
-                        <div class="box-content">
-                            <div class="box-title">Analytics Dashboard</div>
-                            <div class="box-desc">React-based dashboard with TypeScript, featuring real-time data visualization, custom charts, and responsive design patterns.</div>
+                    <div class="boxes">
+                        <!-- Project 1 -->
+                        <div class="box animate-on-scroll">
+                            <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                                <div class="img-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop" alt="E-commerce Platform">
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-title">E-commerce Platform</div>
+                                    <div class="box-desc">Full-stack e-commerce solution with MERN stack, featuring payment integration, admin dashboard, and real-time inventory management.</div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    
-                    <div class="box animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop" alt="Social Media App">
-                        <div class="box-content">
-                            <div class="box-title">Social Media App</div>
-                            <div class="box-desc">Full-featured social platform with real-time messaging, file uploads, and AWS S3 integration for scalable media storage.</div>
+                        
+                        <!-- Project 2 -->
+                        <div class="box animate-on-scroll">
+                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                                <div class="img-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop" alt="Analytics Dashboard">
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-title">Analytics Dashboard</div>
+                                    <div class="box-desc">React-based dashboard with TypeScript, featuring real-time data visualization, custom charts, and responsive design patterns.</div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    
-                    <div class="box animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop" alt="Task Management">
-                        <div class="box-content">
-                            <div class="box-title">Task Management System</div>
-                            <div class="box-desc">Collaborative project management tool with drag-and-drop interface, team collaboration features, and AWS deployment.</div>
+                        
+                        <!-- Project 3 -->
+                        <div class="box animate-on-scroll">
+                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                                <div class="img-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=300&fit=crop" alt="Social Media App">
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-title">Social Media App</div>
+                                    <div class="box-desc">Full-featured social platform with real-time messaging, file uploads, and AWS S3 integration for scalable media storage.</div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    
-                    <div class="box animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=200&fit=crop" alt="API Gateway">
-                        <div class="box-content">
-                            <div class="box-title">Microservices API</div>
-                            <div class="box-desc">Scalable Node.js microservices architecture with TypeScript, Docker containerization, and AWS Lambda functions.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="box animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=200&fit=crop" alt="Real-time Chat">
-                        <div class="box-content">
-                            <div class="box-title">Real-time Chat App</div>
-                            <div class="box-desc">WebSocket-powered chat application with MongoDB persistence, JWT authentication, and responsive mobile design.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section id="contact-trigger" class="main-socials">
-            <div class="socials">
-                <div class="social-info animate-on-scroll">
-                    <h1>Let's Build Something Amazing Together</h1>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 3rem;">Ready to bring your ideas to life with cutting-edge technology</p>
+                        <!-- Project 4 -->
+                        <div class="box animate-on-scroll">
+                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                                <div class="img-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="Task Management">
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-title">Task Management System</div>
+                                    <div class="box-desc">Collaborative project management tool with drag-and-drop interface, team collaboration features, and AWS deployment.</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Project 5 -->
+                        <div class="box animate-on-scroll">
+                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                                <div class="img-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=500&h=300&fit=crop" alt="API Gateway">
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-title">Microservices API</div>
+                                    <div class="box-desc">Scalable Node.js microservices architecture with TypeScript, Docker containerization, and AWS Lambda functions.</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Project 6 -->
+                        <div class="box animate-on-scroll">
+                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                                <div class="img-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=500&h=300&fit=crop" alt="Real-time Chat">
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-title">Real-time Chat App</div>
+                                    <div class="box-desc">WebSocket-powered chat application with MongoDB persistence, JWT authentication, and responsive mobile design.</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="social-links animate-on-scroll">
-                    <a class="links" href="https://github.com/Lavin-kulal" target="_blank">
-                        <i class="fab fa-github"></i>
-                        GitHub
-                    </a>
-                    <a class="links" href="https://www.linkedin.com/in/laveen-kumar-36a340173/" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                        LinkedIn
-                    </a>
-                    <a class="links" href="mailto:laveenk0032@gmail.com" target="_blank">
-                        <i class="fas fa-envelope"></i>
-                        Email
-                    </a>
+            </section>
+
+            <section id="contact-trigger" class="main-socials">
+                <div class="socials">
+                    <div class="social-info animate-on-scroll">
+                        <h1>Let's Build Something Amazing</h1>
+                        <p>Ready to bring your ideas to life? I'm currently available for freelance work and open to new opportunities. Let's connect!</p>
+                    </div>
+                    
+                    <div class="social-links animate-on-scroll">
+                        <a class="links" href="https://github.com/Lavin-kulal" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                        <a class="links" href="https://www.linkedin.com/in/laveen-kumar-36a340173/" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn
+                        </a>
+                        <a class="links" href="https://twitter.com/home" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                            Twitter
+                        </a>
+                    </div>
+                    
+                    <div class="email animate-on-scroll">
+                        <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                        <a href="mailto:laveenk0032@gmail.com">laveenk0032@gmail.com</a>
+                    </div>
                 </div>
-                
-                <div class="email animate-on-scroll">
-                    <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
-                    laveenk0032@gmail.com
-                </div>
-            </div>
-        </section>
+            </section>
+        </main>
     </div>
 
     <script>
-        // Custom cursor
+        // --- JAVASCRIPT LOGIC ---
+
+        // 1. Custom Cursor Logic
         const cursor = document.querySelector('.cursor');
-        let mouseX = 0, mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+        document.addEventListener('mousemove', e => {
+            // Use pageX/pageY to account for scrolling
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
         });
 
-        function animateCursor() {
-            cursor.style.left = mouseX - 10 + 'px';
-            cursor.style.top = mouseY - 10 + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-        });
-
-        // Scroll animations
+        // 2. Intersection Observer for Scroll Animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.1, // Trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Start animation a bit before it's fully in view
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once it's visible
                 }
             });
         }, observerOptions);
 
+        // Observe all elements with the class .animate-on-scroll
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
 
-        // Navigation background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.main-navigation');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(13, 17, 23, 0.98)';
-            } else {
-                nav.style.background = 'rgba(13, 17, 23, 0.95)';
-            }
-        });
-
-        // Typing animation for name
+        // 3. Typing Animation for Name
         const nameElement = document.querySelector('.my-info h1');
-        const nameText = 'LAVEEN KUMAR';
-        nameElement.innerHTML = '';
+        const nameText = nameElement.textContent;
+        nameElement.textContent = ''; // Clear the original text
         
+        // Start typing after a short delay
         setTimeout(() => {
             let i = 0;
             const typeWriter = () => {
                 if (i < nameText.length) {
-                    nameElement.innerHTML += nameText.charAt(i);
+                    nameElement.textContent += nameText.charAt(i);
                     i++;
-                    setTimeout(typeWriter, 100);
+                    setTimeout(typeWriter, 100); // Adjust typing speed here (in ms)
                 }
             };
             typeWriter();
-        }, 1000);
-
-        // Add hover effects to tech tags
+        }, 1200); // Delay before typing starts
+        
+        // 4. Tech Tag hover effect (simple CSS-like interaction via JS)
         document.querySelectorAll('.tech-tag').forEach(tag => {
             tag.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.1) rotate(2deg)';
+                const randomRotate = (Math.random() - 0.5) * 10; // -5 to 5 degrees
+                this.style.transform = `scale(1.1) rotate(${randomRotate}deg)`;
             });
             
             tag.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1) rotate(0deg)';
             });
         });
+
     </script>
 </body>
 </html>
