@@ -368,6 +368,9 @@
         .my-photo {
             position: relative;
             animation: slideInRight 1s ease-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .my-photo img {
@@ -379,6 +382,8 @@
             transition: all 0.3s ease;
             position: relative;
             z-index: 2;
+            /* Add these styles for better image cropping */
+            object-position: center top;
         }
 
         .my-photo::before {
@@ -590,6 +595,45 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* File input styling for image upload */
+        .image-upload-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .image-upload-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .image-upload-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .image-upload-container:hover .image-upload-overlay {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -639,7 +683,13 @@
                 </div>
                 
                 <div class="my-photo">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Laveen Kumar">
+                    <div class="image-upload-container">
+                        <img id="profileImage" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=" alt="Laveen Kumar">
+                        <input type="file" id="imageUpload" class="image-upload-input" accept="image/*">
+                        <div class="image-upload-overlay">
+                            <i class="fas fa-camera"></i> Upload Photo
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -750,6 +800,21 @@
         }
         animateCursor();
 
+        // Image upload functionality
+        const imageUpload = document.getElementById('imageUpload');
+        const profileImage = document.getElementById('profileImage');
+
+        imageUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -816,6 +881,13 @@
             tag.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1) rotate(0deg)';
             });
+        });
+
+        // Load your uploaded image on page load
+        window.addEventListener('load', function() {
+            // Convert the uploaded image to base64 and set it
+            // You would need to save your image as a base64 string or use a proper file path
+            // For now, I'm using a placeholder. Replace this with your actual image data.
         });
     </script>
 </body>
