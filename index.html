@@ -450,6 +450,16 @@
             position: relative;
             border: 1px solid rgba(255,255,255,0.15);
             backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .box:hover {
@@ -477,6 +487,9 @@
 
         .box-content {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .box-title {
@@ -489,6 +502,7 @@
         .box-desc {
             font-size: 0.95rem;
             line-height: 1.7;
+            flex-grow: 1;
         }
 
         .main-socials {
@@ -674,79 +688,103 @@
             <section id="work-trigger" class="main-work">
                 <div class="work">
                     <div class="box-info animate-on-scroll">
-                        <h1>My Projects</h1>
+                        <h1>My Work</h1>
                         <p>A selection of my recent work, showcasing my skills in building modern web applications.</p>
                     </div>
                     
                     <div class="boxes">
                         <div class="box animate-on-scroll">
-                            <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                            <a href="https://lavin-kulal.github.io/company-site/" target="_blank">
                                 <div class="img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop" alt="E-commerce Platform">
+                                    <img src="./images/one.jpg" alt="Company Site">
                                 </div>
                                 <div class="box-content">
-                                    <div class="box-title">E-commerce Platform</div>
-                                    <div class="box-desc">Full-stack e-commerce solution with MERN stack, featuring payment integration, admin dashboard, and real-time inventory management.</div>
+                                    <div class="box-title">Company Website</div>
+                                    <div class="box-desc">A professional and responsive landing page built for a modern company, showcasing services and contact information.</div>
                                 </div>
                             </a>
                         </div>
                         
                         <div class="box animate-on-scroll">
-                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                             <a href="https://lavin-kulal.github.io/conference-website/" target="_blank">
                                 <div class="img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop" alt="Analytics Dashboard">
+                                    <img src="./images/conference site.jpg" alt="Conference Website">
                                 </div>
                                 <div class="box-content">
-                                    <div class="box-title">Analytics Dashboard</div>
-                                    <div class="box-desc">React-based dashboard with TypeScript, featuring real-time data visualization, custom charts, and responsive design patterns.</div>
+                                    <div class="box-title">Conference Website</div>
+                                    <div class="box-desc">A complete, multi-page website for a tech conference, including speaker bios, schedules, and registration links.</div>
                                 </div>
                             </a>
                         </div>
                         
                         <div class="box animate-on-scroll">
-                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                             <a href="https://lavin-kulal.github.io/Documentation/" target="_blank">
                                 <div class="img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=300&fit=crop" alt="Social Media App">
+                                    <img src="./images/document.png" alt="Documentation Page">
                                 </div>
                                 <div class="box-content">
-                                    <div class="box-title">Social Media App</div>
-                                    <div class="box-desc">Full-featured social platform with real-time messaging, file uploads, and AWS S3 integration for scalable media storage.</div>
+                                    <div class="box-title">Technical Documentation</div>
+                                    <div class="box-desc">A clean and readable layout for technical documentation, featuring a sidebar for easy navigation through topics.</div>
                                 </div>
                             </a>
                         </div>
 
                         <div class="box animate-on-scroll">
-                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                             <a href="https://lavin-kulal.github.io/restaurant-website/" target="_blank">
                                 <div class="img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="Task Management">
+                                    <img src="./images/restaurent new.png" alt="Restaurant Website">
                                 </div>
                                 <div class="box-content">
-                                    <div class="box-title">Task Management System</div>
-                                    <div class="box-desc">Collaborative project management tool with drag-and-drop interface, team collaboration features, and AWS deployment.</div>
+                                    <div class="box-title">Restaurant Website</div>
+                                    <div class="box-desc">An elegant and appetizing landing page for a restaurant, designed to attract customers with beautiful imagery and menu highlights.</div>
                                 </div>
                             </a>
                         </div>
 
                         <div class="box animate-on-scroll">
-                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                             <a href="https://lavin-kulal.github.io/speaker-form/" target="_blank">
                                 <div class="img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=500&h=300&fit=crop" alt="API Gateway">
+                                    <img src="./images/speakerform.png" alt="Speaker Form">
                                 </div>
                                 <div class="box-content">
-                                    <div class="box-title">Microservices API</div>
-                                    <div class="box-desc">Scalable Node.js microservices architecture with TypeScript, Docker containerization, and AWS Lambda functions.</div>
+                                    <div class="box-title">Speaker Signup Form</div>
+                                    <div class="box-desc">A user-friendly and well-validated form for event speaker submissions, ensuring all necessary data is captured.</div>
                                 </div>
                             </a>
                         </div>
 
                         <div class="box animate-on-scroll">
-                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                             <a href="https://lavin-kulal.github.io/flexible-website/" target="_blank">
                                 <div class="img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=500&h=300&fit=crop" alt="Real-time Chat">
+                                    <img src="./images/responsive flexible.png" alt="Flexible Website">
                                 </div>
                                 <div class="box-content">
-                                    <div class="box-title">Real-time Chat App</div>
-                                    <div class="box-desc">WebSocket-powered chat application with MongoDB persistence, JWT authentication, and responsive mobile design.</div>
+                                    <div class="box-title">Responsive Flexible Layout</div>
+                                    <div class="box-desc">A demonstration of a fully responsive website design using modern CSS like Flexbox for adaptable layouts.</div>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="box animate-on-scroll">
+                             <a href="https://lavin-kulal.github.io/calculator/" target="_blank">
+                                <div class="img-wrapper">
+                                    <img src="./images/calcc new.png" alt="JavaScript Calculator">
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-title">JavaScript Calculator</div>
+                                    <div class="box-desc">A functional calculator built with vanilla JavaScript, HTML, and CSS, showcasing logic and DOM manipulation skills.</div>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="box animate-on-scroll">
+                             <a href="https://lavin-kulal.github.io/loggin-page/" target="_blank">
+                                <div class="img-wrapper">
+                                    <img src="./images/loggin page new.png" alt="Login Page">
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-title">Modern Login Page</div>
+                                    <div class="box-desc">A sleek and secure login page interface with a clean design, suitable for any modern web application.</div>
                                 </div>
                             </a>
                         </div>
