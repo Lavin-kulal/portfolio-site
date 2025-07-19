@@ -95,16 +95,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laveen Kumar - Full Stack Developer</title>
     
-    <!-- Google Fonts for a modern, clean look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
     <script src="https://kit.fontawesome.com/4c5a6b2c4a.js" crossorigin="anonymous"></script>
     
     <style>
-        /* --- CSS STYLES --- */
-
-        /* 1. Global Reset & Body Styles */
         * {
             margin: 0;
             padding: 0;
@@ -119,19 +113,18 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            background: #0d1117; /* Dark background inspired by GitHub */
+            background: #0d1117; 
             color: #c9d1d9;
-            cursor: none; /* Hide default cursor */
+            cursor: none;
         }
 
-        /* 2. Custom Cursor */
         .cursor {
             width: 25px;
             height: 25px;
             border: 2px solid #fff;
             border-radius: 50%;
             position: fixed;
-            pointer-events: none; /* Allows clicking through the cursor */
+            pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
             transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
@@ -142,14 +135,12 @@
             transform: translate(-50%, -50%) scale(1);
         }
 
-        /* Enlarge cursor on hover over links/buttons */
         a:hover ~ .cursor, button:hover ~ .cursor, .box:hover ~ .cursor {
             transform: translate(-50%, -50%) scale(1.5);
             background-color: rgba(255, 255, 255, 0.5);
             border-width: 1px;
         }
 
-        /* 3. Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -190,14 +181,13 @@
             50% { transform: translateY(-40px) translateX(20px) rotate(180deg); }
         }
 
-        /* 4. Navigation Bar */
         .main-navigation {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(13, 17, 23, 0.8); /* Semi-transparent background */
-            backdrop-filter: blur(10px); /* Glassmorphism effect */
+            background: rgba(13, 17, 23, 0.8); 
+            backdrop-filter: blur(10px); 
             z-index: 1000;
             padding: 1rem 5%;
             transition: all 0.3s ease;
@@ -270,7 +260,6 @@
             color: #fff;
         }
 
-        /* 5. Hero Section (Main Profile) */
         .main-profile {
             min-height: 100vh;
             display: flex;
@@ -303,10 +292,10 @@
 
         .my-info h1 {
             color: #fff;
-            font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
             margin-bottom: 0.5rem;
-            min-height: 5rem; /* Reserve space for typing animation */
+            min-height: 5rem;
             display: inline-block;
             background: linear-gradient(135deg, #c8d2ff 0%, #a3b0f5 100%);
             -webkit-background-clip: text;
@@ -402,7 +391,7 @@
             transition: all 0.5s ease;
             position: relative;
             z-index: 2;
-            object-position: center top; /* Adjust if your photo is cropped */
+            object-position: center;
         }
         
         .my-photo::before {
@@ -423,7 +412,6 @@
             box-shadow: 0 0 30px rgba(118, 75, 162, 0.5);
         }
 
-        /* 6. Work Section */
         .main-work {
             padding: 6rem 5%;
             background: rgba(255,255,255,0.03);
@@ -503,7 +491,6 @@
             line-height: 1.7;
         }
 
-        /* 7. Contact Section */
         .main-socials {
             padding: 6rem 5%;
         }
@@ -579,7 +566,6 @@
             color: #fff;
         }
 
-        /* 8. Core Animations */
         @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -589,7 +575,6 @@
             100% { background-position: 0% 50%; } 
         }
 
-        /* 9. Responsive Design */
         @media (max-width: 992px) {
             .profile-divInner {
                 grid-template-columns: 1fr;
@@ -605,14 +590,14 @@
                 justify-content: center;
             }
             .my-photo {
-                grid-row: 1; /* Move photo to the top on smaller screens */
+                grid-row: 1;
             }
         }
         
         @media (max-width: 768px) {
-            body { cursor: auto; } /* Disable custom cursor on mobile for better UX */
+            body { cursor: auto; }
             .cursor { display: none; }
-            .nav-buttons { display: none; } /* Simplified nav for mobile, can add a hamburger menu later */
+            .nav-buttons { display: none; }
             .my-info h1 { font-size: 2.8rem; }
             .my-info .role { font-size: 1.5rem; }
             .my-photo img { width: 250px; height: 250px; }
@@ -621,7 +606,6 @@
             .boxes { grid-template-columns: 1fr; gap: 2rem; }
         }
 
-        /* 10. Scroll animations Utility */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(40px);
@@ -682,7 +666,6 @@
                     </div>
                     
                     <div class="my-photo">
-                        <!-- IMPORTANT: Replace this with your actual image path -->
                         <img src="./images/profile.jpg" alt="Laveen Kumar - Full Stack Developer">
                     </div>
                 </div>
@@ -696,7 +679,6 @@
                     </div>
                     
                     <div class="boxes">
-                        <!-- Project 1 -->
                         <div class="box animate-on-scroll">
                             <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
                                 <div class="img-wrapper">
@@ -709,7 +691,6 @@
                             </a>
                         </div>
                         
-                        <!-- Project 2 -->
                         <div class="box animate-on-scroll">
                              <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
                                 <div class="img-wrapper">
@@ -722,7 +703,6 @@
                             </a>
                         </div>
                         
-                        <!-- Project 3 -->
                         <div class="box animate-on-scroll">
                              <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
                                 <div class="img-wrapper">
@@ -735,7 +715,6 @@
                             </a>
                         </div>
 
-                        <!-- Project 4 -->
                         <div class="box animate-on-scroll">
                              <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
                                 <div class="img-wrapper">
@@ -748,7 +727,6 @@
                             </a>
                         </div>
 
-                        <!-- Project 5 -->
                         <div class="box animate-on-scroll">
                              <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
                                 <div class="img-wrapper">
@@ -761,7 +739,6 @@
                             </a>
                         </div>
 
-                        <!-- Project 6 -->
                         <div class="box animate-on-scroll">
                              <a href="#" target="_blank" style="text-decoration: none; color: inherit;">
                                 <div class="img-wrapper">
@@ -809,58 +786,49 @@
     </div>
 
     <script>
-        // --- JAVASCRIPT LOGIC ---
-
-        // 1. Custom Cursor Logic
         const cursor = document.querySelector('.cursor');
         document.addEventListener('mousemove', e => {
-            // Use pageX/pageY to account for scrolling
             cursor.style.left = e.pageX + 'px';
             cursor.style.top = e.pageY + 'px';
         });
 
-        // 2. Intersection Observer for Scroll Animations
         const observerOptions = {
-            threshold: 0.1, // Trigger when 10% of the element is visible
-            rootMargin: '0px 0px -50px 0px' // Start animation a bit before it's fully in view
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Stop observing once it's visible
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe all elements with the class .animate-on-scroll
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
 
-        // 3. Typing Animation for Name
         const nameElement = document.querySelector('.my-info h1');
         const nameText = nameElement.textContent;
-        nameElement.textContent = ''; // Clear the original text
+        nameElement.textContent = '';
         
-        // Start typing after a short delay
         setTimeout(() => {
             let i = 0;
             const typeWriter = () => {
                 if (i < nameText.length) {
                     nameElement.textContent += nameText.charAt(i);
                     i++;
-                    setTimeout(typeWriter, 100); // Adjust typing speed here (in ms)
+                    setTimeout(typeWriter, 100);
                 }
             };
             typeWriter();
-        }, 1200); // Delay before typing starts
+        }, 1200);
         
-        // 4. Tech Tag hover effect (simple CSS-like interaction via JS)
         document.querySelectorAll('.tech-tag').forEach(tag => {
             tag.addEventListener('mouseenter', function() {
-                const randomRotate = (Math.random() - 0.5) * 10; // -5 to 5 degrees
+                const randomRotate = (Math.random() - 0.5) * 10;
                 this.style.transform = `scale(1.1) rotate(${randomRotate}deg)`;
             });
             
