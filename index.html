@@ -1950,7 +1950,7 @@
                             </div>
                         </div>
 
-                        <!-- MERN E-commerce Platform - CORRECTED -->
+                        <!-- CORRECTED: MERN E-commerce Platform -->
                         <div class="project-card animate-on-scroll" data-category="mern fullstack react">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
@@ -1969,17 +1969,14 @@
                                     <span class="tech-pill">Redux</span>
                                 </div>
                                 <div class="project-links">
-                                    <a href="https://e-com-app-2023.onrender.com/" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i> Live Demo
-                                    </a>
                                     <a href="https://github.com/Lavin-kulal/MERN-Ecommerce-app-2023" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> Code
+                                        <i class="fab fa-github"></i> View Code
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Real Estate Marketplace - CORRECTED -->
+                        <!-- CORRECTED: Real Estate Marketplace -->
                         <div class="project-card animate-on-scroll" data-category="mern fullstack react">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
@@ -1998,18 +1995,41 @@
                                     <span class="tech-pill">TailwindCSS</span>
                                 </div>
                                 <div class="project-links">
-                                    <a href="https://real-estate-mern-psi.vercel.app/" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i> Live Demo
-                                    </a>
-                                    <a href="https://github.com/Lavin-kulal/real-estate-mern" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> Code
+                                    <a href="https://github.com/Lavin-kulal/Real-estate-website" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> View Code
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Dynamic Portfolio Website - CORRECTED -->
-                        <div class="project-card animate-on-scroll" data-category="frontend">
+                        <!-- Mutual Fund Broker Backend -->
+                        <div class="project-card animate-on-scroll" data-category="fullstack backend">
+                            <div class="project-image">
+                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #48c6ef, #6f86d6);">
+                                    <div class="project-title-short">📈 Mutual Fund</div>
+                                    <div class="project-tech-preview">Backend API</div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Mutual Fund Broker Backend</h3>
+                                <p class="project-description">A robust backend API system for managing mutual fund investments and broker operations. Features include user authentication, portfolio tracking, transaction management, and comprehensive reporting capabilities.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">Node.js</span>
+                                    <span class="tech-pill">Express.js</span>
+                                    <span class="tech-pill">MongoDB</span>
+                                    <span class="tech-pill">JWT</span>
+                                    <span class="tech-pill">REST API</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Lavin-kulal/mutual-fund-broker-be" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CORRECTED: Dynamic Portfolio Website -->
+                        <div class="project-card animate-on-scroll" data-category="frontend react">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
                                     <div class="project-title-short">💼 Portfolio</div>
@@ -2018,7 +2038,7 @@
                             </div>
                             <div class="project-content">
                                 <h3 class="project-title">Dynamic Portfolio Website</h3>
-                                <p class="project-description">A dynamic and modern portfolio website to showcase projects and skills. Built with HTML, CSS, and JavaScript, it features smooth animations, project filtering, and a fully responsive design.</p>
+                                <p class="project-description">A modern, animated portfolio showcasing my projects and skills. Features custom cursor effects, scroll animations, project filtering, and responsive design with elegant UI/UX.</p>
                                 <div class="project-tech">
                                     <span class="tech-pill">HTML5</span>
                                     <span class="tech-pill">CSS3</span>
@@ -2036,6 +2056,7 @@
                             </div>
                         </div>
 
+                        <!-- Modern Company Website -->
                         <div class="project-card animate-on-scroll" data-category="frontend">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
@@ -2063,6 +2084,7 @@
                             </div>
                         </div>
 
+                        <!-- Tech Conference Platform -->
                         <div class="project-card animate-on-scroll" data-category="frontend">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #fa709a, #fee140);">
@@ -2090,6 +2112,7 @@
                             </div>
                         </div>
 
+                        <!-- JavaScript Calculator -->
                         <div class="project-card animate-on-scroll" data-category="frontend">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
@@ -2117,6 +2140,7 @@
                             </div>
                         </div>
 
+                        <!-- Elegant Restaurant Website -->
                         <div class="project-card animate-on-scroll" data-category="frontend">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
@@ -2251,8 +2275,7 @@
                 
                 if (category === 'all' || projectCategory.includes(category)) {
                     project.classList.remove('hidden');
-                    // Force reflow to re-apply animation
-                    void project.offsetWidth; 
+                    void project.offsetWidth;
                     project.style.animation = 'fadeIn 0.5s ease-out forwards';
                 } else {
                     project.classList.add('hidden');
