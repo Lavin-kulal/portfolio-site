@@ -1111,7 +1111,7 @@
 </body>
 </html>
  -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1920,7 +1920,7 @@
                     </div>
                     
                     <div class="projects-grid" id="projectsGrid">
-                        <!-- NEW: ModernShop E-commerce with AI Chatbot -->
+                        <!-- ModernShop E-commerce with AI Chatbot -->
                         <div class="project-card animate-on-scroll" data-category="react fullstack ai">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
@@ -1950,6 +1950,7 @@
                             </div>
                         </div>
 
+                        <!-- MERN E-commerce Platform - CORRECTED -->
                         <div class="project-card animate-on-scroll" data-category="mern fullstack react">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
@@ -1968,13 +1969,17 @@
                                     <span class="tech-pill">Redux</span>
                                 </div>
                                 <div class="project-links">
-                                    <a href="https://github.com/Lavin-kulal/Mern-Ecommerce-website" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> View Code
+                                    <a href="https://e-com-app-2023.onrender.com/" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                    <a href="https://github.com/Lavin-kulal/MERN-Ecommerce-app-2023" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
                                     </a>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Real Estate Marketplace - CORRECTED -->
                         <div class="project-card animate-on-scroll" data-category="mern fullstack react">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
@@ -1993,14 +1998,18 @@
                                     <span class="tech-pill">TailwindCSS</span>
                                 </div>
                                 <div class="project-links">
-                                    <a href="https://github.com/Lavin-kulal/Real-estate-website" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> View Code
+                                    <a href="https://real-estate-mern-psi.vercel.app/" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                    <a href="https://github.com/Lavin-kulal/real-estate-mern" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="project-card animate-on-scroll" data-category="frontend react">
+                        <!-- Dynamic Portfolio Website - CORRECTED -->
+                        <div class="project-card animate-on-scroll" data-category="frontend">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
                                     <div class="project-title-short">💼 Portfolio</div>
@@ -2009,7 +2018,7 @@
                             </div>
                             <div class="project-content">
                                 <h3 class="project-title">Dynamic Portfolio Website</h3>
-                                <p class="project-description">This very website you're viewing! A modern, animated portfolio showcasing my projects and skills. Features custom cursor effects, scroll animations, project filtering, and responsive design.</p>
+                                <p class="project-description">A dynamic and modern portfolio website to showcase projects and skills. Built with HTML, CSS, and JavaScript, it features smooth animations, project filtering, and a fully responsive design.</p>
                                 <div class="project-tech">
                                     <span class="tech-pill">HTML5</span>
                                     <span class="tech-pill">CSS3</span>
@@ -2017,8 +2026,11 @@
                                     <span class="tech-pill">Animations</span>
                                 </div>
                                 <div class="project-links">
-                                    <a href="https://github.com/Lavin-kulal/Portfolio-v2" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> View Code
+                                    <a href="https://lavin-kulal.github.io/portfolio-site/" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                    <a href="https://github.com/Lavin-kulal/portfolio-site" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
                                     </a>
                                 </div>
                             </div>
@@ -2239,7 +2251,8 @@
                 
                 if (category === 'all' || projectCategory.includes(category)) {
                     project.classList.remove('hidden');
-                    void project.offsetWidth;
+                    // Force reflow to re-apply animation
+                    void project.offsetWidth; 
                     project.style.animation = 'fadeIn 0.5s ease-out forwards';
                 } else {
                     project.classList.add('hidden');
