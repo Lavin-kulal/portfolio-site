@@ -1111,7 +1111,7 @@
 </body>
 </html>
  -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2129,4 +2129,1249 @@
         });
     </script>
 </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laveen Kumar - Full Stack Developer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4c5a6b2c4a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #0d1117; 
+            color: #c9d1d9;
+        }
+
+        a, button, .project-card, .filter-btn, .experience-item {
+            cursor: pointer;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before,
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.2;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .bg-animation::before {
+            top: 10%;
+            left: 10%;
+        }
+
+        .bg-animation::after {
+            bottom: 10%;
+            right: 10%;
+            animation-delay: -7s;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            50% { transform: translateY(-40px) translateX(20px) rotate(180deg); }
+        }
+
+        .main-navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 17, 23, 0.8); 
+            backdrop-filter: blur(20px); 
+            z-index: 1000;
+            padding: 1rem 5%;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .navigation-div2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.4s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-buttons a {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-buttons a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.4s ease-in-out;
+        }
+
+        .nav-buttons a:hover::before {
+            width: 100%;
+        }
+
+        .nav-buttons a:hover {
+            color: #fff;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            z-index: 1001;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .menu-toggle.active .fa-bars { display: none; }
+        .menu-toggle .fa-times { display: none; }
+        .menu-toggle.active .fa-times { display: block; }
+
+        .main-profile {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 5% 2rem;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile-divInner {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .my-info {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .my-info h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            color: #8b949e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .my-info h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            min-height: 5rem;
+            display: inline-block;
+            background: linear-gradient(135deg, #c8d2ff 0%, #a3b0f5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        @keyframes fadeInColor {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .my-info .role {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            animation: fadeInColor 1s ease-out 0.8s both;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .tech-tag {
+            background: rgba(255,255,255,0.08);
+            color: #c9d1d9;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .tech-tag:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .my-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 1.2s both;
+            max-width: 600px;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            animation: fadeInUp 1s ease-out 1.4s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .my-photo {
+            position: relative;
+            animation: slideInRight 1s ease-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .my-photo img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.1);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 2;
+            object-position: center;
+        }
+        
+        .my-photo::before {
+            content: '';
+            position: absolute;
+            width: 370px;
+            height: 370px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #ff6b6b, #667eea);
+            background-size: 400% 400%;
+            border-radius: 50%;
+            z-index: 1;
+            animation: rotateGradient 10s linear infinite;
+            filter: blur(5px);
+        }
+
+        .my-photo:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(118, 75, 162, 0.5);
+        }
+
+        .page-section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .page-section.bg-dark {
+            background: #0d1117;
+        }
+
+        .page-section.bg-light-dark {
+            background: #161b22;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #c8d2ff 0%, #a3b0f5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .skills-column {
+            background: rgba(28, 35, 43, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            animation: shimmerLine 3s infinite;
+        }
+
+        @keyframes shimmerLine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .skills-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .skills-column h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .skills-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.2rem;
+        }
+        
+        @keyframes skillFloat {
+            0%, 100% { 
+                transform: translateY(0px) scale(1);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            50% { 
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, rgba(13, 17, 23, 0.8), rgba(28, 35, 43, 0.6));
+            padding: 1.2rem 0.8rem;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+            animation: skillFloat 4s ease-in-out infinite;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-item:hover::before {
+            left: 100%;
+        }
+
+        .skills-list li:nth-child(2n) { animation-delay: -2s; }
+        .skills-list li:nth-child(3n) { animation-delay: -1s; }
+        .skills-list li:nth-child(4n) { animation-delay: -3s; }
+        .skills-list li:nth-child(5n) { animation-delay: -0.5s; }
+        
+        .skill-item:hover {
+            animation-play-state: paused;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.1));
+            transform: translateY(-10px) scale(1.05);
+            border-color: rgba(102, 126, 234, 0.4);
+            animation: pulseGlow 2s infinite;
+        }
+
+        .skill-item i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #a3b0f5, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover i {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.5));
+        }
+
+        .skill-item span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            color: #c9d1d9;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover span {
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .experience-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .experience-item {
+            background: rgba(28, 35, 43, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 2.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-header h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .experience-header p {
+            margin: 0;
+            color: #8b949e;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .experience-company {
+             width: 100%;
+             color: #a3b0f5;
+             font-weight: 500;
+             font-size: 1.1rem;
+             display: flex;
+             align-items: center;
+             gap: 0.5rem;
+        }
+
+        .experience-details ul {
+            list-style: none;
+        }
+
+        .experience-details li {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .experience-details li i {
+            color: #667eea;
+            margin-top: 6px;
+            font-size: 0.8rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: rgba(28, 35, 43, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .project-card.featured {
+            border: 2px solid #ff6b6b;
+            order: -1;
+        }
+
+        .project-card.featured::before {
+            content: "Featured Project";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-card.featured::after {
+            content: "\f005";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 135px;
+            color: white;
+            font-size: 0.8rem;
+            z-index: 3;
+        }
+        
+        .project-card.hidden { display: none; }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 1rem;
+        }
+        .project-title-short { 
+            font-size: 1.2rem; 
+            margin-bottom: 0.5rem; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .project-tech-preview { 
+            font-size: 0.8rem; 
+            opacity: 0.9; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .project-content { 
+            padding: 1.8rem; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .project-title { 
+            font-size: 1.4rem; 
+            font-weight: 600; 
+            margin-bottom: 0.8rem; 
+            line-height: 1.3; 
+            background: linear-gradient(135deg, #c8d2ff, #a3b0f5); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        .project-description { 
+            font-size: 0.95rem; 
+            line-height: 1.7; 
+            flex-grow: 1; 
+            margin-bottom: 1.2rem; 
+            opacity: 0.9; 
+        }
+        .project-tech { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 0.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .tech-pill { 
+            background: rgba(102, 126, 234, 0.15); 
+            color: #a3b0f5; 
+            padding: 0.3rem 0.8rem; 
+            border-radius: 15px; 
+            font-size: 0.8rem; 
+            font-weight: 500; 
+            border: 1px solid rgba(102, 126, 234, 0.2); 
+            transition: all 0.3s ease; 
+        }
+        .tech-pill:hover { 
+            transform: translateY(-2px); 
+            background: rgba(102, 126, 234, 0.3); 
+        }
+        .project-links { 
+            display: flex; 
+            gap: 1rem; 
+            margin-top: auto; 
+        }
+        .project-link { 
+            flex: 1; 
+            text-align: center; 
+            padding: 0.7rem; 
+            background: rgba(255,255,255,0.08); 
+            color: #c9d1d9; 
+            text-decoration: none; 
+            border-radius: 10px; 
+            transition: all 0.3s ease; 
+            font-weight: 500; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 0.5rem; 
+        }
+        .project-link:hover { 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: #fff; 
+            transform: translateY(-2px); 
+        }
+        .view-more-container { 
+            text-align: center; 
+            margin-top: 3rem; 
+        }
+        
+        footer {
+            padding: 4rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content { max-width: 800px; margin: 0 auto; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
+        .social-links a { color: #8b949e; font-size: 1.5rem; transition: all 0.3s ease; }
+        .social-links a:hover { color: #667eea; transform: translateY(-3px); }
+        .copyright { font-size: 0.9rem; opacity: 0.7; }
+
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes rotateGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 992px) {
+            .profile-divInner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+            .my-info p, .my-info { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .cta-buttons, .tech-stack { justify-content: center; }
+            .my-photo { grid-row: 1; }
+            .projects-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+            .experience-header {justify-content: center; text-align: center;}
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-buttons { position: absolute; top: 100%; left: 0; right: 0; background: rgba(13, 17, 23, 0.95); backdrop-filter: blur(20px); border-top: 1px solid rgba(255, 255, 255, 0.1); transform: translateY(-150%); opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+            .nav-buttons.active { transform: translateY(0); opacity: 1; visibility: visible; }
+            .nav-buttons ul { flex-direction: column; align-items: center; padding: 2rem; gap: 1.5rem; }
+            .my-info h1 { font-size: 2.8rem; }
+            .my-info .role { font-size: 1.5rem; }
+            .my-photo img { width: 280px; height: 280px; }
+            .my-photo::before { width: 300px; height: 300px; }
+            .projects-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .skills-list { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="main-container">
+        <header class="main-navigation">
+            <div class="navigation-div2">
+                <a href="#about-trigger" class="logo">
+                    <i class="fas fa-code"></i> Laveen Kumar
+                </a>
+                <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </button>
+                <nav class="nav-buttons" id="navMenu">
+                    <ul>
+                        <li><a href="#about-trigger" onclick="closeMenu()"><i class="fas fa-user"></i> About</a></li>
+                        <li><a href="#skills-trigger" onclick="closeMenu()"><i class="fas fa-cogs"></i> Skills</a></li>
+                        <li><a href="#experience-trigger" onclick="closeMenu()"><i class="fas fa-briefcase"></i> Experience</a></li>
+                        <li><a href="#work-trigger" onclick="closeMenu()"><i class="fas fa-laptop-code"></i> Projects</a></li>
+                        <li><a href="https://drive.google.com/file/d/1AtYYuy2AZ2bjZzUc6lja2NlHxo2fBs1f/view" target="_blank" onclick="closeMenu()"><i class="fas fa-file-pdf"></i> Resume</a></li>
+                        <li><a href="#contact-trigger" onclick="closeMenu()"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="about-trigger" class="main-profile">
+                <div class="profile-divInner">
+                    <div class="my-info">
+                        <h2><i class="fas fa-hand-wave"></i> Hey, I am</h2>
+                        <h1>LAVEEN KUMAR</h1>
+                        <div class="role">
+                            <i class="fas fa-magic"></i> Full Stack MERN Developer
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag"><i class="devicon-react-original"></i> React</span>
+                            <span class="tech-tag"><i class="devicon-typescript-plain"></i> TypeScript</span>
+                            <span class="tech-tag"><i class="devicon-nodejs-plain"></i> Node.js</span>
+                            <span class="tech-tag"><i class="devicon-mongodb-plain"></i> MongoDB</span>
+                            <span class="tech-tag"><i class="devicon-amazonwebservices-original"></i> AWS</span>
+                            <span class="tech-tag"><i class="fas fa-robot"></i> LLM</span>
+                        </div>
+                        
+                        <p>
+                            <i class="fas fa-laptop-code"></i>
+                            Software Developer with 3.5+ years of experience in Full-Stack Development, MERN Stack, and Cloud Computing. Passionate about optimizing performance, implementing real-time communication, and integrating AI/LLMs to build innovative, efficient solutions that drive business impact.
+                        </p>
+                        
+                        <div class="cta-buttons">
+                            <a href="#work-trigger" class="btn-primary">
+                                <i class="fas fa-rocket"></i> Explore My Projects
+                            </a>
+                            <a href="https://drive.google.com/file/d/1AtYYuy2AZ2bjZzUc6lja2NlHxo2fBs1f/view" target="_blank" class="btn-secondary">
+                                <i class="fas fa-download"></i> Download Resume
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="my-photo">
+                        <img src="./images/profile.jpg" alt="Laveen Kumar - Full Stack Developer" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </section>
+            
+            <section id="skills-trigger" class="page-section bg-light-dark">
+                <div class="container">
+                    <div class="section-header animate-on-scroll">
+                        <h1><i class="fas fa-tools"></i> Technical Skills</h1>
+                        <p>A collection of the technologies, frameworks, and tools I use to bring ideas to life with modern animations and interactions.</p>
+                    </div>
+                    <div class="skills-container animate-on-scroll">
+                        <div class="skills-column">
+                            <h3><i class="fas fa-paint-brush"></i> Frontend Technologies</h3>
+                            <ul class="skills-list">
+                                <li class="skill-item"><i class="devicon-html5-plain"></i> <span>HTML5</span></li>
+                                <li class="skill-item"><i class="devicon-css3-plain"></i> <span>CSS3</span></li>
+                                <li class="skill-item"><i class="devicon-javascript-plain"></i> <span>JavaScript</span></li>
+                                <li class="skill-item"><i class="devicon-typescript-plain"></i> <span>TypeScript</span></li>
+                                <li class="skill-item"><i class="devicon-react-original"></i> <span>React.js</span></li>
+                                <li class="skill-item"><i class="devicon-redux-original"></i> <span>Redux</span></li>
+                                <li class="skill-item"><i class="devicon-tailwindcss-plain"></i> <span>Tailwind CSS</span></li>
+                                <li class="skill-item"><i class="devicon-materialui-plain"></i> <span>Material UI</span></li>
+                            </ul>
+                        </div>
+                        <div class="skills-column">
+                            <h3><i class="fas fa-server"></i> Backend & DevOps</h3>
+                            <ul class="skills-list">
+                                <li class="skill-item"><i class="devicon-nodejs-plain"></i> <span>Node.js</span></li>
+                                <li class="skill-item"><i class="devicon-express-original"></i> <span>Express.js</span></li>
+                                <li class="skill-item"><i class="devicon-mongodb-plain"></i> <span>MongoDB</span></li>
+                                <li class="skill-item"><i class="devicon-redis-plain"></i> <span>Redis</span></li>
+                                <li class="skill-item"><i class="fas fa-key"></i> <span>JWT</span></li>
+                                <li class="skill-item"><i class="fas fa-brain"></i> <span>LLM/AI</span></li>
+                                <li class="skill-item"><i class="devicon-socketio-original"></i> <span>Socket.io</span></li>
+                                <li class="skill-item"><i class="devicon-amazonwebservices-original"></i> <span>AWS</span></li>
+                                <li class="skill-item"><i class="devicon-docker-plain"></i> <span>Docker</span></li>
+                                <li class="skill-item"><i class="devicon-git-plain"></i> <span>Git</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience-trigger" class="page-section bg-dark">
+                <div class="container">
+                     <div class="section-header animate-on-scroll">
+                        <h1><i class="fas fa-briefcase"></i> Work Experience</h1>
+                    </div>
+                    <div class="experience-container">
+                        <div class="experience-item animate-on-scroll">
+                            <div class="experience-header">
+                                <div>
+                                    <h3><i class="fas fa-code"></i> Software Developer</h3>
+                                    <p class="experience-company"><i class="fas fa-building"></i> Updapt - an ESG Tech Co. | Mangalore</p>
+                                </div>
+                                <p><i class="fas fa-calendar-alt"></i> 04/2022 - Present</p>
+                            </div>
+                            <div class="experience-details">
+                                <ul>
+                                    <li><i class="fas fa-angle-right"></i>Engineered and deployed scalable, full-stack web applications on the MERN stack, leveraging AWS services (ECS, Lambda, S3) to support high-availability cloud environments for ESG data management.</li>
+                                    <li><i class="fas fa-angle-right"></i>Architected a robust security model using AWS Cognito and JWT, implementing fine-grained Role-Based Access Control (RBAC) that reduced unauthorized access incidents by 99%.</li>
+                                    <li><i class="fas fa-angle-right"></i>Pioneered the integration of Large Language Models (LLMs) to automate enterprise assessment workflows, resulting in a 40% reduction in manual effort and enhanced contextual data insights.</li>
+                                    <li><i class="fas fa-angle-right"></i>Developed and maintained real-time features with Socket.io for live notifications and data synchronization, improving user engagement and collaborative efficiency.</li>
+                                    <li><i class="fas fa-angle-right"></i>Built and published a TypeScript-based React component monorepo using Lerna, establishing a design system that accelerated frontend development and ensured UI consistency across all products.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-item animate-on-scroll">
+                            <div class="experience-header">
+                                <div>
+                                    <h3><i class="fas fa-users"></i> Sr. Representative, Operations (Advisor II)</h3>
+                                    <p class="experience-company"><i class="fas fa-building"></i> Concentrix Daksh Services Ind Pvt Ltd | Bangalore</p>
+                                </div>
+                                <p><i class="fas fa-calendar-alt"></i> 02/2020 - 04/2022</p>
+                            </div>
+                            <div class="experience-details">
+                                <ul>
+                                    <li><i class="fas fa-angle-right"></i>Reviewed and assessed mobile applications for compliance with Google Play Store policies, ensuring accuracy and security while collaborating with internal teams to improve review processes and stay updated on evolving guidelines.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="work-trigger" class="page-section bg-light-dark">
+                <div class="container">
+                    <div class="section-header animate-on-scroll">
+                        <h1><i class="fas fa-rocket"></i> Projects</h1>
+                        <p>A selection of projects that showcase my skills in creating robust, scalable, and user-friendly applications with modern technologies.</p>
+                    </div>
+                    
+                    <div class="projects-grid" id="projectsGrid">
+                        
+                        <div class="project-card animate-on-scroll featured" data-category="mern fullstack react">
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
+                                <div class="project-title-short">
+                                    <i class="fas fa-star"></i> Elite Commerce & Investment Suite
+                                </div>
+                                <div class="project-tech-preview">Team FAME - Full-Stack Platform</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Elite Commerce & Investment Suite (Team FAME)</h3>
+                                <p class="project-description">An all-in-one digital platform integrating E-commerce, Gold Savings, and Event Management. Features secure payments with Razorpay, an admin dashboard, and AWS cloud deployment for seamless user experiences.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">React 18</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Node.js</span><span class="tech-pill">MongoDB</span><span class="tech-pill">Material-UI</span><span class="tech-pill">Razorpay</span><span class="tech-pill">AWS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://www.team-fame.com/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                    <a href="https://github.com/Lavin-kulal/team-fame-backend" target="_blank" class="project-link"><i class="fab fa-github"></i> View Backend</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card animate-on-scroll" data-category="react fullstack ai">
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                <div class="project-title-short">
+                                    <i class="fas fa-shopping-cart"></i> ModernShop
+                                </div>
+                                <div class="project-tech-preview">AI E-commerce Platform</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">ModernShop - AI-Powered E-Commerce</h3>
+                                <p class="project-description">A sophisticated e-commerce platform featuring an intelligent AI chatbot for product recommendations, shopping assistance, and customer support. Built with modern React architecture and state management.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">React</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Redux Toolkit</span><span class="tech-pill">Tailwind CSS</span><span class="tech-pill">AI Chatbot</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://modern-ecommerce-chatbot.vercel.app/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                    <a href="https://github.com/Lavin-kulal/modern-ecommerce-chatbot" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card animate-on-scroll" data-category="mern fullstack react">
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #48c6ef, #6f86d6);">
+                                <div class="project-title-short">
+                                    <i class="fas fa-store"></i> MERN E-commerce
+                                </div>
+                                <div class="project-tech-preview">Full-Stack Shop</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">MERN E-commerce Platform</h3>
+                                <p class="project-description">A full-featured e-commerce application built with the MERN stack. Features user authentication, product management, shopping cart, and a complete admin dashboard for CRUD operations.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">MongoDB</span><span class="tech-pill">Express.js</span><span class="tech-pill">React</span><span class="tech-pill">Node.js</span><span class="tech-pill">Redux</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Lavin-kulal/MERN-Ecommerce-app-2023" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card animate-on-scroll hidden extra" data-category="mern fullstack react">
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
+                                <div class="project-title-short">
+                                    <i class="fas fa-home"></i> Real Estate
+                                </div>
+                                <div class="project-tech-preview">MERN + Firebase</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Real Estate Marketplace</h3>
+                                <p class="project-description">A modern real estate platform built with MERN stack and Firebase. Features Google OAuth authentication, advanced property search, listing management, and responsive design.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">React</span><span class="tech-pill">Node.js</span><span class="tech-pill">MongoDB</span><span class="tech-pill">Firebase</span><span class="tech-pill">TailwindCSS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Lavin-kulal/Real-estate-website" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card animate-on-scroll hidden extra" data-category="fullstack backend">
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #48c6ef, #6f86d6);">
+                                <div class="project-title-short">
+                                    <i class="fas fa-chart-line"></i> Mutual Fund
+                                </div>
+                                <div class="project-tech-preview">Backend API</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Mutual Fund Broker Backend</h3>
+                                <p class="project-description">A robust backend API system for managing mutual fund investments. Features user authentication, portfolio tracking, transaction management, and comprehensive reporting capabilities.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">Node.js</span><span class="tech-pill">Express.js</span><span class="tech-pill">MongoDB</span><span class="tech-pill">JWT</span><span class="tech-pill">REST API</span>
+                                </div>
+                                <div class="project-links">
+                                     <a href="https://github.com/Lavin-kulal/mutual-fund-broker-be" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card animate-on-scroll hidden extra" data-category="frontend">
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                                <div class="project-title-short">
+                                    <i class="fas fa-user-tie"></i> Portfolio
+                                </div>
+                                <div class="project-tech-preview">Personal Showcase</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Dynamic Portfolio Website</h3>
+                                <p class="project-description">A modern, animated portfolio showcasing my projects and skills. Features scroll animations, project filtering, and responsive design with elegant UI/UX.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">JavaScript</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://lavin-kulal.github.io/portfolio-site/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                    <a href="https://github.com/Lavin-kulal/portfolio-site" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="view-more-container animate-on-scroll">
+                        <button id="viewMoreBtn" class="btn-primary" style="margin-top: 2rem;"><i class="fas fa-plus-circle"></i> View More Projects</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="contact-trigger">
+            <div class="footer-content animate-on-scroll">
+                <div class="section-header">
+                    <h1><i class="fas fa-handshake"></i> Let's Build Something Amazing Together</h1>
+                    <p>Ready to transform ideas into intelligent web solutions? I'm currently available for freelance work and exciting new opportunities. Let's connect and create the future!</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/Lavin-kulal" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/laveen-kumar-36a340173/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/home" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:laveenk0032@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p class="copyright">
+                    © 2024 Laveen Kumar | Full Stack MERN Developer | Built with passion and precision
+                    <br>
+                    <strong><i class="fas fa-envelope"></i> Email:</strong> laveenk0032@gmail.com | 
+                    <strong><i class="fas fa-map-marker-alt"></i> Location:</strong> Mangaluru, Karnataka, India
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        
+        const nameElement = document.querySelector('.my-info h1');
+        if (nameElement) {
+            const nameText = nameElement.textContent;
+            nameElement.textContent = '';
+            
+            setTimeout(() => {
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < nameText.length) {
+                        nameElement.textContent += nameText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                };
+                typeWriter();
+            }, 1200);
+        }
+
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.getElementById('menuToggle');
+            if (navMenu && menuToggle) {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            }
+        }
+
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.getElementById('menuToggle');
+            if (navMenu && menuToggle && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        }
+        
+        function filterProjects(category) {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projects = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            projects.forEach(project => {
+                const projectCategory = project.getAttribute('data-category');
+                project.style.animation = 'none';
+                
+                if (category === 'all' || (projectCategory && projectCategory.includes(category))) {
+                    if (project.classList.contains('extra') && document.getElementById('viewMoreBtn').style.display !== 'none') {
+                        project.classList.add('hidden');
+                    } else {
+                         project.classList.remove('hidden');
+                    }
+                    void project.offsetWidth;
+                    project.style.animation = 'fadeIn 0.5s ease-out forwards';
+                } else {
+                    project.classList.add('hidden');
+                }
+            });
+        }
+
+        document.getElementById('viewMoreBtn').addEventListener('click', function() {
+            const extraProjects = document.querySelectorAll('.project-card.extra');
+            extraProjects.forEach(project => {
+                project.classList.remove('hidden');
+            });
+            this.style.display = 'none';
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
 </html>
+
