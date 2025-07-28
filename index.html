@@ -1536,6 +1536,25 @@
             animation: fadeIn 0.5s ease-out forwards;
         }
         
+        .project-card.featured {
+            border: 2px solid #ff6b6b;
+            order: -1; /* This will make it appear first */
+        }
+
+        .project-card.featured::before {
+            content: "⭐ Featured Project";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
         .project-card.hidden { display: none; }
         
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
@@ -1568,42 +1587,6 @@
             transform: scale(1.1);
         }
 
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .overlay-btn {
-            padding: 0.6rem 1.2rem;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .overlay-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.05);
-        }
-
         .project-image-placeholder {
             width: 100%;
             height: 100%;
@@ -1612,11 +1595,12 @@
             justify-content: center;
             flex-direction: column;
             color: white;
-            font-size: 2rem;
+            font-size: 1.5rem; /* Adjusted for better fit */
             font-weight: 600;
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 1rem;
         }
 
         .project-image-placeholder::before {
@@ -1899,6 +1883,7 @@
                     </div>
                     
                     <div class="my-photo">
+                        <!-- Make sure to place your profile image in an 'images' folder -->
                         <img src="./images/profile.jpg" alt="Laveen Kumar - Full Stack Developer">
                     </div>
                 </div>
@@ -1915,11 +1900,44 @@
                         <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
                         <button class="filter-btn" onclick="filterProjects('mern')">MERN Stack</button>
                         <button class="filter-btn" onclick="filterProjects('react')">React Apps</button>
-                        <button class="filter-btn" onclick="filterProjects('fullstack')">Full Stack</button>
+                        <button class="filter-btn" onclick="filterProjects('ai')">AI</button>
                         <button class="filter-btn" onclick="filterProjects('frontend')">Frontend</button>
                     </div>
                     
                     <div class="projects-grid" id="projectsGrid">
+                        
+                        <!-- Team FAME Revolution - Featured Project -->
+                        <div class="project-card animate-on-scroll featured" data-category="mern fullstack react">
+                            <div class="project-image">
+                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
+                                    <div class="project-title-short">🌟 Team FAME Revolution</div>
+                                    <div class="project-tech-preview">Full-Stack Community Platform</div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Team FAME Revolution Platform</h3>
+                                <p class="project-description">A comprehensive full-stack platform empowering individuals through education, community engagement, and financial growth. Features secure authentication, payment processing with Razorpay, admin panel, e-commerce functionality, and AWS cloud deployment.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">React 18</span>
+                                    <span class="tech-pill">TypeScript</span>
+                                    <span class="tech-pill">Node.js</span>
+                                    <span class="tech-pill">MongoDB</span>
+                                    <span class="tech-pill">Material-UI</span>
+                                    <span class="tech-pill">Razorpay</span>
+                                    <span class="tech-pill">AWS S3</span>
+                                    <span class="tech-pill">Docker</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://www.team-fame.com/" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                    <a href="#" class="project-link" style="opacity: 0.7; pointer-events: none;">
+                                        <i class="fab fa-github"></i> Private Repo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- ModernShop E-commerce with AI Chatbot -->
                         <div class="project-card animate-on-scroll" data-category="react fullstack ai">
                             <div class="project-image">
@@ -1950,17 +1968,17 @@
                             </div>
                         </div>
 
-                        <!-- CORRECTED: MERN E-commerce Platform -->
+                        <!-- MERN E-commerce Platform -->
                         <div class="project-card animate-on-scroll" data-category="mern fullstack react">
                             <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-                                    <div class="project-title-short">🛒 MERN</div>
-                                    <div class="project-tech-preview">E-commerce Platform</div>
+                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #48c6ef, #6f86d6);">
+                                    <div class="project-title-short">🛒 MERN E-commerce</div>
+                                    <div class="project-tech-preview">Full-Stack Shop</div>
                                 </div>
                             </div>
                             <div class="project-content">
                                 <h3 class="project-title">MERN E-commerce Platform</h3>
-                                <p class="project-description">A full-featured e-commerce application built with the MERN stack. Features include user authentication, product management, shopping cart, order tracking, and admin dashboard with complete CRUD operations.</p>
+                                <p class="project-description">A full-featured e-commerce application built with the MERN stack. Features user authentication, product management, shopping cart, order tracking, and admin dashboard with complete CRUD operations.</p>
                                 <div class="project-tech">
                                     <span class="tech-pill">MongoDB</span>
                                     <span class="tech-pill">Express.js</span>
@@ -1976,69 +1994,17 @@
                             </div>
                         </div>
 
-                        <!-- CORRECTED: Real Estate Marketplace -->
-                        <div class="project-card animate-on-scroll" data-category="mern fullstack react">
+                        <!-- Dynamic Portfolio Website -->
+                        <div class="project-card animate-on-scroll" data-category="frontend">
                             <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
-                                    <div class="project-title-short">🏠 Real Estate</div>
-                                    <div class="project-tech-preview">MERN + Firebase</div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Real Estate Marketplace</h3>
-                                <p class="project-description">A modern real estate platform built with MERN stack and Firebase. Features Google OAuth authentication, advanced property search, listing management, and responsive design for seamless user experience.</p>
-                                <div class="project-tech">
-                                    <span class="tech-pill">React</span>
-                                    <span class="tech-pill">Node.js</span>
-                                    <span class="tech-pill">MongoDB</span>
-                                    <span class="tech-pill">Firebase</span>
-                                    <span class="tech-pill">TailwindCSS</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/Lavin-kulal/Real-estate-website" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> View Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mutual Fund Broker Backend -->
-                        <div class="project-card animate-on-scroll" data-category="fullstack backend">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #48c6ef, #6f86d6);">
-                                    <div class="project-title-short">📈 Mutual Fund</div>
-                                    <div class="project-tech-preview">Backend API</div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Mutual Fund Broker Backend</h3>
-                                <p class="project-description">A robust backend API system for managing mutual fund investments and broker operations. Features include user authentication, portfolio tracking, transaction management, and comprehensive reporting capabilities.</p>
-                                <div class="project-tech">
-                                    <span class="tech-pill">Node.js</span>
-                                    <span class="tech-pill">Express.js</span>
-                                    <span class="tech-pill">MongoDB</span>
-                                    <span class="tech-pill">JWT</span>
-                                    <span class="tech-pill">REST API</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/Lavin-kulal/mutual-fund-broker-be" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> View Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- CORRECTED: Dynamic Portfolio Website -->
-                        <div class="project-card animate-on-scroll" data-category="frontend react">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
                                     <div class="project-title-short">💼 Portfolio</div>
                                     <div class="project-tech-preview">Personal Showcase</div>
                                 </div>
                             </div>
                             <div class="project-content">
                                 <h3 class="project-title">Dynamic Portfolio Website</h3>
-                                <p class="project-description">A modern, animated portfolio showcasing my projects and skills. Features custom cursor effects, scroll animations, project filtering, and responsive design with elegant UI/UX.</p>
+                                <p class="project-description">A modern, animated portfolio showcasing projects and skills. Features custom cursor effects, scroll animations, project filtering, and responsive design with elegant UI/UX.</p>
                                 <div class="project-tech">
                                     <span class="tech-pill">HTML5</span>
                                     <span class="tech-pill">CSS3</span>
@@ -2056,117 +2022,6 @@
                             </div>
                         </div>
 
-                        <!-- Modern Company Website -->
-                        <div class="project-card animate-on-scroll" data-category="frontend">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-                                    <div class="project-title-short">🏢 Company</div>
-                                    <div class="project-tech-preview">Corporate Website</div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Modern Company Website</h3>
-                                <p class="project-description">A professional corporate website featuring clean design, smooth animations, and optimal performance. Built with semantic HTML5 and advanced CSS techniques for maximum compatibility and accessibility.</p>
-                                <div class="project-tech">
-                                    <span class="tech-pill">HTML5</span>
-                                    <span class="tech-pill">CSS3</span>
-                                    <span class="tech-pill">Responsive Design</span>
-                                    <span class="tech-pill">SEO Optimized</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://lavin-kulal.github.io/company-site/" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i> Live Demo
-                                    </a>
-                                    <a href="https://github.com/Lavin-kulal/company-site" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tech Conference Platform -->
-                        <div class="project-card animate-on-scroll" data-category="frontend">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #fa709a, #fee140);">
-                                    <div class="project-title-short">🎯 Conference</div>
-                                    <div class="project-tech-preview">Event Platform</div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Tech Conference Platform</h3>
-                                <p class="project-description">A comprehensive multi-page website for tech conferences. Features speaker profiles, event schedules, registration forms, and modern layouts designed for optimal user engagement and information accessibility.</p>
-                                <div class="project-tech">
-                                    <span class="tech-pill">HTML5</span>
-                                    <span class="tech-pill">CSS3</span>
-                                    <span class="tech-pill">Multi-page</span>
-                                    <span class="tech-pill">Event Management</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://lavin-kulal.github.io/conference-website/" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i> Live Demo
-                                    </a>
-                                    <a href="https://github.com/Lavin-kulal/conference-website" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- JavaScript Calculator -->
-                        <div class="project-card animate-on-scroll" data-category="frontend">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
-                                    <div class="project-title-short">🧮 Calculator</div>
-                                    <div class="project-tech-preview">Vanilla JS</div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title">JavaScript Calculator</h3>
-                                <p class="project-description">A fully functional calculator built with vanilla JavaScript. Demonstrates DOM manipulation, event handling, and mathematical operations with a clean, intuitive interface and responsive design.</p>
-                                <div class="project-tech">
-                                    <span class="tech-pill">JavaScript</span>
-                                    <span class="tech-pill">HTML5</span>
-                                    <span class="tech-pill">CSS3</span>
-                                    <span class="tech-pill">DOM Manipulation</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://lavin-kulal.github.io/calculator/" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i> Live Demo
-                                    </a>
-                                    <a href="https://github.com/Lavin-kulal/calculator" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Elegant Restaurant Website -->
-                        <div class="project-card animate-on-scroll" data-category="frontend">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
-                                    <div class="project-title-short">🍽️ Restaurant</div>
-                                    <div class="project-tech-preview">Food & Dining</div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Elegant Restaurant Website</h3>
-                                <p class="project-description">An appetizing and visually appealing restaurant landing page designed to attract customers. Showcases menu items, restaurant ambiance, and contact information with beautiful food-focused design elements.</p>
-                                <div class="project-tech">
-                                    <span class="tech-pill">HTML5</span>
-                                    <span class="tech-pill">CSS3</span>
-                                    <span class="tech-pill">Responsive</span>
-                                    <span class="tech-pill">Food Design</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://lavin-kulal.github.io/restaurant-website/" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i> Live Demo
-                                    </a>
-                                    <a href="https://github.com/Lavin-kulal/restaurant-website" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -2251,11 +2106,9 @@
         function closeMenu() {
             const navMenu = document.getElementById('navMenu');
             const menuToggle = document.getElementById('menuToggle');
-            if (navMenu && menuToggle) {
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                }
+            if (navMenu && menuToggle && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
             }
         }
         
@@ -2270,10 +2123,9 @@
 
             projects.forEach(project => {
                 const projectCategory = project.getAttribute('data-category');
-                
                 project.style.animation = 'none';
                 
-                if (category === 'all' || projectCategory.includes(category)) {
+                if (category === 'all' || (projectCategory && projectCategory.includes(category))) {
                     project.classList.remove('hidden');
                     void project.offsetWidth;
                     project.style.animation = 'fadeIn 0.5s ease-out forwards';
@@ -2293,16 +2145,6 @@
                         block: 'start'
                     });
                 }
-            });
-        });
-
-        window.addEventListener('load', () => {
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                }, index * 100);
             });
         });
     </script>
