@@ -1535,10 +1535,10 @@
             height: 100%;
             animation: fadeIn 0.5s ease-out forwards;
         }
-        
+
         .project-card.featured {
             border: 2px solid #ff6b6b;
-            order: -1; /* This will make it appear first */
+            order: -1;
         }
 
         .project-card.featured::before {
@@ -1595,7 +1595,7 @@
             justify-content: center;
             flex-direction: column;
             color: white;
-            font-size: 1.5rem; /* Adjusted for better fit */
+            font-size: 1.5rem;
             font-weight: 600;
             text-align: center;
             position: relative;
@@ -1883,7 +1883,6 @@
                     </div>
                     
                     <div class="my-photo">
-                        <!-- Make sure to place your profile image in an 'images' folder -->
                         <img src="./images/profile.jpg" alt="Laveen Kumar - Full Stack Developer">
                     </div>
                 </div>
@@ -1906,7 +1905,6 @@
                     
                     <div class="projects-grid" id="projectsGrid">
                         
-                        <!-- Team FAME Revolution - Featured Project -->
                         <div class="project-card animate-on-scroll featured" data-category="mern fullstack react">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
@@ -1938,7 +1936,6 @@
                             </div>
                         </div>
 
-                        <!-- ModernShop E-commerce with AI Chatbot -->
                         <div class="project-card animate-on-scroll" data-category="react fullstack ai">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
@@ -1968,7 +1965,6 @@
                             </div>
                         </div>
 
-                        <!-- MERN E-commerce Platform -->
                         <div class="project-card animate-on-scroll" data-category="mern fullstack react">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #48c6ef, #6f86d6);">
@@ -1994,7 +1990,31 @@
                             </div>
                         </div>
 
-                        <!-- Dynamic Portfolio Website -->
+                        <div class="project-card animate-on-scroll" data-category="mern fullstack react">
+                            <div class="project-image">
+                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
+                                    <div class="project-title-short">🏠 Real Estate</div>
+                                    <div class="project-tech-preview">MERN + Firebase</div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Real Estate Marketplace</h3>
+                                <p class="project-description">A modern real estate platform built with MERN stack and Firebase. Features Google OAuth authentication, advanced property search, listing management, and responsive design for seamless user experience.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">React</span>
+                                    <span class="tech-pill">Node.js</span>
+                                    <span class="tech-pill">MongoDB</span>
+                                    <span class="tech-pill">Firebase</span>
+                                    <span class="tech-pill">TailwindCSS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Lavin-kulal/Real-estate-website" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="project-card animate-on-scroll" data-category="frontend">
                             <div class="project-image">
                                 <div class="project-image-placeholder" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
@@ -2021,7 +2041,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                     </div>
                 </div>
             </section>
