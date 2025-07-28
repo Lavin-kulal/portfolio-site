@@ -1140,30 +1140,10 @@
             overflow-x: hidden;
             background: #0d1117; 
             color: #c9d1d9;
-            cursor: none;
         }
 
-        .cursor {
-            width: 25px;
-            height: 25px;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
-            mix-blend-mode: difference;
-        }
-
-        body:hover .cursor {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        a:hover ~ .cursor, button:hover ~ .cursor, .project-card:hover ~ .cursor, .experience-item:hover ~ .cursor {
-            transform: translate(-50%, -50%) scale(1.5);
-            background-color: rgba(255, 255, 255, 0.5);
-            border-width: 1px;
+        a, button, .project-card, .filter-btn, .experience-item {
+            cursor: pointer;
         }
 
         .bg-animation {
@@ -1291,7 +1271,6 @@
             border: none;
             color: #fff;
             font-size: 1.5rem;
-            cursor: pointer;
             z-index: 1001;
             transition: transform 0.3s ease-in-out;
         }
@@ -1498,7 +1477,6 @@
             opacity: 0.9;
         }
 
-        /* SKILLS SECTION */
         .skills-container {
             display: flex;
             justify-content: center;
@@ -1543,6 +1521,12 @@
             gap: 1.5rem;
         }
         
+        @keyframes subtle-float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
         .skill-item {
             display: flex;
             align-items: center;
@@ -1550,11 +1534,16 @@
             background: rgba(13, 17, 23, 0.5);
             padding: 0.75rem;
             border-radius: 10px;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
+            animation: subtle-float 6s ease-in-out infinite;
         }
+
+        .skills-list li:nth-child(2n) { animation-delay: -3s; }
+        .skills-list li:nth-child(3n) { animation-delay: -1.5s; }
+        .skills-list li:nth-child(4n) { animation-delay: -4.5s; }
         
         .skill-item:hover {
-            transform: translateY(-5px);
+            animation-play-state: paused;
             background: rgba(102, 126, 234, 0.1);
         }
 
@@ -1563,7 +1552,6 @@
             color: #a3b0f5;
         }
 
-        /* EXPERIENCE SECTION */
         .experience-container {
             max-width: 900px;
             margin: 0 auto;
@@ -1629,7 +1617,6 @@
             font-size: 0.8rem;
         }
         
-        /* PROJECTS SECTION */
         .filter-buttons {
             display: flex;
             justify-content: center;
@@ -1644,7 +1631,6 @@
             color: #c9d1d9;
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 25px;
-            cursor: pointer;
             transition: all 0.3s ease;
             font-size: 0.9rem;
             font-weight: 500;
@@ -1729,8 +1715,8 @@
         .project-links { display: flex; gap: 1rem; margin-top: auto; }
         .project-link { flex: 1; text-align: center; padding: 0.7rem; background: rgba(255,255,255,0.08); color: #c9d1d9; text-decoration: none; border-radius: 10px; transition: all 0.3s ease; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .project-link:hover { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; transform: translateY(-2px); }
-
-        /* FOOTER */
+        .view-more-container { text-align: center; margin-top: 3rem; }
+        
         footer {
             padding: 4rem 5% 2rem;
             text-align: center;
@@ -1743,7 +1729,6 @@
         .social-links a:hover { color: #667eea; transform: translateY(-3px); }
         .copyright { font-size: 0.9rem; opacity: 0.7; }
 
-        /* ANIMATIONS & RESPONSIVE DESIGN */
         @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -1761,8 +1746,6 @@
         }
         
         @media (max-width: 768px) {
-            body { cursor: auto; }
-            .cursor { display: none; }
             .menu-toggle { display: block; }
             .nav-buttons { position: absolute; top: 100%; left: 0; right: 0; background: rgba(13, 17, 23, 0.95); backdrop-filter: blur(20px); border-top: 1px solid rgba(255, 255, 255, 0.1); transform: translateY(-150%); opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
             .nav-buttons.active { transform: translateY(0); opacity: 1; visibility: visible; }
@@ -1778,7 +1761,6 @@
     </style>
 </head>
 <body>
-    <div class="cursor"></div>
     <div class="bg-animation"></div>
     
     <div class="main-container">
@@ -1831,7 +1813,7 @@
                     </div>
                     
                     <div class="my-photo">
-                        <img src="./images/profile.jpg" alt="Laveen Kumar - Full Stack Developer">
+                        <img src="./images/profile.jpg" alt="Laveen Kumar - Full Stack Developer" loading="lazy" decoding="async">
                     </div>
                 </div>
             </section>
@@ -1854,7 +1836,6 @@
                                 <li class="skill-item"><i class="devicon-redux-original"></i> <span>Redux</span></li>
                                 <li class="skill-item"><i class="devicon-tailwindcss-plain"></i> <span>Tailwind CSS</span></li>
                                 <li class="skill-item"><i class="devicon-materialui-plain"></i> <span>Material UI</span></li>
-                                <li class="skill-item"><i class="devicon-bootstrap-plain"></i> <span>Bootstrap</span></li>
                             </ul>
                         </div>
                         <div class="skills-column">
@@ -1892,12 +1873,11 @@
                             </div>
                             <div class="experience-details">
                                 <ul>
-                                    <li><i class="fas fa-angle-right"></i>Designed and developed full-stack web applications using the MERN stack with AWS services (Lambda, S3, Cognito, ECS) for scalable cloud deployments.</li>
-                                    <li><i class="fas fa-angle-right"></i>Implemented secure authentication and authorization using AWS Cognito and JWT, including role-based access control (RBAC) and data encryption strategies.</li>
-                                    <li><i class="fas fa-angle-right"></i>Developed real-time applications using Socket.io for live data updates and improved user interactions.</li>
-                                    <li><i class="fas fa-angle-right"></i>Automated CI/CD pipelines using AWS CodePipeline and CodeCommit for efficient deployment and version control.</li>
-                                    <li><i class="fas fa-angle-right"></i>Integrated LLM-driven features into enterprise workflows for Al-generated data suggestions, anomaly detection, and real-time validation to enhance accuracy and reduce manual effort.</li>
-                                    <li><i class="fas fa-angle-right"></i>Built and published an npm package for a TypeScript-based React component monorepo using Lerna for efficient package management and scalable frontend development.</li>
+                                    <li><i class="fas fa-angle-right"></i>Engineered and deployed scalable, full-stack web applications on the MERN stack, leveraging AWS services (ECS, Lambda, S3) to support high-availability cloud environments for ESG data management.</li>
+                                    <li><i class="fas fa-angle-right"></i>Architected a robust security model using AWS Cognito and JWT, implementing fine-grained Role-Based Access Control (RBAC) that reduced unauthorized access incidents by 99%.</li>
+                                    <li><i class="fas fa-angle-right"></i>Pioneered the integration of Large Language Models (LLMs) to automate enterprise assessment workflows, resulting in a 40% reduction in manual effort and enhanced contextual data insights.</li>
+                                    <li><i class="fas fa-angle-right"></i>Developed and maintained real-time features with Socket.io for live notifications and data synchronization, improving user engagement and collaborative efficiency.</li>
+                                    <li><i class="fas fa-angle-right"></i>Built and published a TypeScript-based React component monorepo using Lerna, establishing a design system that accelerated frontend development and ensured UI consistency across all products.</li>
                                 </ul>
                             </div>
                         </div>
@@ -1912,22 +1892,7 @@
                             </div>
                             <div class="experience-details">
                                 <ul>
-                                    <li><i class="fas fa-angle-right"></i>Reviewed and assessed mobile applications for compliance with Google Play Store policies, ensuring accuracy, efficiency, and security while collaborating with internal teams to improve review processes.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="experience-item animate-on-scroll">
-                            <div class="experience-header">
-                                <div>
-                                    <h3>Sales Executive</h3>
-                                    <p class="experience-company">Target Infotech Pvt Ltd | Mangalore</p>
-                                </div>
-                                <p>10/2018 - 01/2020</p>
-                            </div>
-                            <div class="experience-details">
-                                <ul>
-                                    <li><i class="fas fa-angle-right"></i>Developed and managed client relationships, conducted market research, and promoted company products/services to drive sales growth and optimize business strategies.</li>
+                                    <li><i class="fas fa-angle-right"></i>Reviewed and assessed mobile applications for compliance with Google Play Store policies, ensuring accuracy and security while collaborating with internal teams to improve review processes and stay updated on evolving guidelines.</li>
                                 </ul>
                             </div>
                         </div>
@@ -1943,7 +1908,6 @@
                     </div>
                     
                     <div class="projects-grid" id="projectsGrid">
-                        
                         <div class="project-card animate-on-scroll featured" data-category="mern fullstack react">
                             <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
                                 <div class="project-title-short">🌟 Elite Commerce & Investment Suite</div>
@@ -1953,21 +1917,11 @@
                                 <h3 class="project-title">Elite Commerce & Investment Suite (Team FAME)</h3>
                                 <p class="project-description">An all-in-one digital platform integrating E-commerce, Gold Savings, and Event Management. Features secure payments with Razorpay, an admin dashboard, and AWS cloud deployment for seamless user experiences.</p>
                                 <div class="project-tech">
-                                    <span class="tech-pill">React 18</span>
-                                    <span class="tech-pill">TypeScript</span>
-                                    <span class="tech-pill">Node.js</span>
-                                    <span class="tech-pill">MongoDB</span>
-                                    <span class="tech-pill">Material-UI</span>
-                                    <span class="tech-pill">Razorpay</span>
-                                    <span class="tech-pill">AWS</span>
+                                    <span class="tech-pill">React 18</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Node.js</span><span class="tech-pill">MongoDB</span><span class="tech-pill">Material-UI</span><span class="tech-pill">Razorpay</span><span class="tech-pill">AWS</span>
                                 </div>
                                 <div class="project-links">
-                                    <a href="https://www.team-fame.com/" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i> Live Demo
-                                    </a>
-                                    <a href="#" class="project-link" style="opacity: 0.7; pointer-events: none;">
-                                        <i class="fab fa-github"></i> Private Repo
-                                    </a>
+                                    <a href="https://www.team-fame.com/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                    <a href="#" class="project-link" style="opacity: 0.7; pointer-events: none;"><i class="fab fa-github"></i> Private Repo</a>
                                 </div>
                             </div>
                         </div>
@@ -1981,19 +1935,11 @@
                                 <h3 class="project-title">ModernShop - AI-Powered E-Commerce</h3>
                                 <p class="project-description">A sophisticated e-commerce platform featuring an intelligent AI chatbot for product recommendations and customer support, built with a modern React architecture and state management.</p>
                                 <div class="project-tech">
-                                    <span class="tech-pill">React</span>
-                                    <span class="tech-pill">TypeScript</span>
-                                    <span class="tech-pill">Redux Toolkit</span>
-                                    <span class="tech-pill">Tailwind CSS</span>
-                                    <span class="tech-pill">AI Chatbot</span>
+                                    <span class="tech-pill">React</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Redux Toolkit</span><span class="tech-pill">Tailwind CSS</span><span class="tech-pill">AI Chatbot</span>
                                 </div>
                                 <div class="project-links">
-                                    <a href="https://modern-ecommerce-chatbot.vercel.app/" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i> Live Demo
-                                    </a>
-                                    <a href="https://github.com/Lavin-kulal/modern-ecommerce-chatbot" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> Code
-                                    </a>
+                                    <a href="https://modern-ecommerce-chatbot.vercel.app/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                    <a href="https://github.com/Lavin-kulal/modern-ecommerce-chatbot" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
                                 </div>
                             </div>
                         </div>
@@ -2007,20 +1953,67 @@
                                 <h3 class="project-title">MERN E-commerce Platform</h3>
                                 <p class="project-description">A full-featured e-commerce application built with the MERN stack. Features user authentication, product management, shopping cart, and a complete admin dashboard for CRUD operations.</p>
                                 <div class="project-tech">
-                                    <span class="tech-pill">MongoDB</span>
-                                    <span class="tech-pill">Express.js</span>
-                                    <span class="tech-pill">React</span>
-                                    <span class="tech-pill">Node.js</span>
-                                    <span class="tech-pill">Redux</span>
+                                    <span class="tech-pill">MongoDB</span><span class="tech-pill">Express.js</span><span class="tech-pill">React</span><span class="tech-pill">Node.js</span><span class="tech-pill">Redux</span>
                                 </div>
                                 <div class="project-links">
-                                    <a href="https://github.com/Lavin-kulal/MERN-Ecommerce-app-2023" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> View Code
-                                    </a>
+                                    <a href="https://github.com/Lavin-kulal/MERN-Ecommerce-app-2023" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code</a>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="project-card animate-on-scroll hidden extra" data-category="mern fullstack react">
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4);">
+                                <div class="project-title-short">📝 MERN Blogging Platform</div>
+                                <div class="project-tech-preview">Content Management System</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">MERN Blogging Platform</h3>
+                                <p class="project-description">A complete CMS for bloggers featuring rich text editing, user authentication, comment systems, and an admin panel for content moderation. Optimized for SEO and performance.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">React</span><span class="tech-pill">Node.js</span><span class="tech-pill">MongoDB</span><span class="tech-pill">JWT</span><span class="tech-pill">Cloudinary</span>
+                                </div>
+                                <div class="project-links">
+                                     <a href="https://github.com/Lavin-kulal" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card animate-on-scroll hidden extra" data-category="react frontend">
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                                <div class="project-title-short">📊 Data Visualization Dashboard</div>
+                                <div class="project-tech-preview">React & Chart.js</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Data Visualization Dashboard</h3>
+                                <p class="project-description">An interactive dashboard for visualizing complex datasets. Features dynamic charts, custom date-range filters, and export-to-CSV functionality, built with React and Chart.js.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">React</span><span class="tech-pill">Chart.js</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Styled Components</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Lavin-kulal" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card animate-on-scroll hidden extra" data-category="mern fullstack">
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #5ee7df, #b490ca);">
+                                <div class="project-title-short">✅ Task Management App</div>
+                                <div class="project-tech-preview">Real-time MERN Stack</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Real-Time Task Manager</h3>
+                                <p class="project-description">A collaborative task management tool like Trello, built with the MERN stack and Socket.io. Features drag-and-drop boards, real-time updates, and user notifications.</p>
+                                <div class="project-tech">
+                                    <span class="tech-pill">React</span><span class="tech-pill">Socket.io</span><span class="tech-pill">Node.js</span><span class="tech-pill">MongoDB</span><span class="tech-pill">Redux</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Lavin-kulal" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="view-more-container animate-on-scroll">
+                        <button id="viewMoreBtn" class="btn-primary" style="margin-top: 2rem;">View More</button>
                     </div>
                 </div>
             </section>
@@ -2033,18 +2026,10 @@
                     <p>Ready to transform ideas into intelligent web solutions? I'm currently available for freelance work and exciting new opportunities. Let's connect and create the future! 🚀</p>
                 </div>
                 <div class="social-links">
-                    <a href="https://github.com/Lavin-kulal" target="_blank" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/laveen-kumar-36a340173/" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://twitter.com/home" target="_blank" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="mailto:laveenk0032@gmail.com" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                    <a href="https://github.com/Lavin-kulal" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/laveen-kumar-36a340173/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/home" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:laveenk0032@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
                 <p class="copyright">
                     © 2024 Laveen Kumar | Full Stack MERN Wizard 🧙‍♂️ | Built with ❤️ and lots of ☕
@@ -2057,17 +2042,6 @@
     </div>
 
     <script>
-        const cursor = document.querySelector('.cursor');
-        if (cursor && !/Mobi|Android/i.test(navigator.userAgent)) {
-            document.addEventListener('mousemove', e => {
-                cursor.style.left = e.pageX + 'px';
-                cursor.style.top = e.pageY + 'px';
-            });
-        } else if (cursor) {
-            cursor.style.display = 'none';
-        }
-
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2128,7 +2102,11 @@
                 project.style.animation = 'none';
                 
                 if (category === 'all' || (projectCategory && projectCategory.includes(category))) {
-                    project.classList.remove('hidden');
+                    if (project.classList.contains('extra') && !document.getElementById('viewMoreBtn').style.display === 'none') {
+                        project.classList.add('hidden');
+                    } else {
+                         project.classList.remove('hidden');
+                    }
                     void project.offsetWidth;
                     project.style.animation = 'fadeIn 0.5s ease-out forwards';
                 } else {
@@ -2136,6 +2114,14 @@
                 }
             });
         }
+
+        document.getElementById('viewMoreBtn').addEventListener('click', function() {
+            const extraProjects = document.querySelectorAll('.project-card.extra');
+            extraProjects.forEach(project => {
+                project.classList.remove('hidden');
+            });
+            this.style.display = 'none';
+        });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
