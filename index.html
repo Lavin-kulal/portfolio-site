@@ -1121,6 +1121,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4c5a6b2c4a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     
     <style>
         * {
@@ -1159,7 +1160,7 @@
             transform: translate(-50%, -50%) scale(1);
         }
 
-        a:hover ~ .cursor, button:hover ~ .cursor, .project-card:hover ~ .cursor {
+        a:hover ~ .cursor, button:hover ~ .cursor, .project-card:hover ~ .cursor, .experience-item:hover ~ .cursor {
             transform: translate(-50%, -50%) scale(1.5);
             background-color: rgba(255, 255, 255, 0.5);
             border-width: 1px;
@@ -1456,14 +1457,22 @@
             box-shadow: 0 0 30px rgba(118, 75, 162, 0.5);
         }
 
-        .main-work {
+        .page-section {
             padding: 6rem 5%;
-            background: rgba(255,255,255,0.03);
-            border-top: 1px solid rgba(255,255,255,0.1);
             position: relative;
         }
 
-        .work {
+        .page-section.bg-dark {
+            background: #0d1117;
+        }
+
+        .page-section.bg-light-dark {
+            background: #161b22;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .container {
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -1484,11 +1493,143 @@
 
         .section-header p {
             font-size: 1.2rem;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             opacity: 0.9;
         }
 
+        /* SKILLS SECTION */
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .skills-column {
+            background: rgba(28, 35, 43, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+        }
+
+        .skills-column h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .skills-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .skills-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(13, 17, 23, 0.5);
+            padding: 0.75rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .skill-item i {
+            font-size: 2rem;
+            color: #a3b0f5;
+        }
+
+        /* EXPERIENCE SECTION */
+        .experience-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .experience-item {
+            background: rgba(28, 35, 43, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 2.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-header h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        .experience-header p {
+            margin: 0;
+            color: #8b949e;
+            font-weight: 500;
+        }
+        
+        .experience-company {
+             width: 100%;
+             color: #a3b0f5;
+             font-weight: 500;
+             font-size: 1.1rem;
+        }
+
+        .experience-details ul {
+            list-style: none;
+        }
+
+        .experience-details li {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .experience-details li i {
+            color: #667eea;
+            margin-top: 6px;
+            font-size: 0.8rem;
+        }
+        
+        /* PROJECTS SECTION */
         .filter-buttons {
             display: flex;
             justify-content: center;
@@ -1533,9 +1674,8 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            animation: fadeIn 0.5s ease-out forwards;
         }
-
+        
         .project-card.featured {
             border: 2px solid #ff6b6b;
             order: -1;
@@ -1557,39 +1697,15 @@
         
         .project-card.hidden { display: none; }
         
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        
         .project-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             border-color: rgba(102, 126, 234, 0.5);
         }
 
-        .project-image {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
         .project-image-placeholder {
             width: 100%;
-            height: 100%;
+            height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1602,230 +1718,62 @@
             overflow: hidden;
             padding: 1rem;
         }
+        .project-title-short { font-size: 1.2rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .project-tech-preview { font-size: 0.8rem; opacity: 0.9; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .project-content { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.8rem; line-height: 1.3; background: linear-gradient(135deg, #c8d2ff, #a3b0f5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .project-description { font-size: 0.95rem; line-height: 1.7; flex-grow: 1; margin-bottom: 1.2rem; opacity: 0.9; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .tech-pill { background: rgba(102, 126, 234, 0.15); color: #a3b0f5; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(102, 126, 234, 0.2); transition: all 0.3s ease; }
+        .tech-pill:hover { transform: translateY(-2px); background: rgba(102, 126, 234, 0.3); }
+        .project-links { display: flex; gap: 1rem; margin-top: auto; }
+        .project-link { flex: 1; text-align: center; padding: 0.7rem; background: rgba(255,255,255,0.08); color: #c9d1d9; text-decoration: none; border-radius: 10px; transition: all 0.3s ease; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .project-link:hover { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; transform: translateY(-2px); }
 
-        .project-image-placeholder::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        .project-title-short {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .project-tech-preview {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .project-content {
-            padding: 1.8rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            line-height: 1.3;
-            background: linear-gradient(135deg, #c8d2ff, #a3b0f5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .project-description {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            flex-grow: 1;
-            margin-bottom: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-pill {
-            background: rgba(102, 126, 234, 0.15);
-            color: #a3b0f5;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .tech-pill:hover {
-            transform: translateY(-2px);
-            background: rgba(102, 126, 234, 0.3);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-        }
-        
-        .project-link {
-            flex: 1;
-            text-align: center;
-            padding: 0.7rem;
-            background: rgba(255,255,255,0.08);
-            color: #c9d1d9;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .project-link:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
+        /* FOOTER */
         footer {
             padding: 4rem 5% 2rem;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
+        .footer-content { max-width: 800px; margin: 0 auto; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
+        .social-links a { color: #8b949e; font-size: 1.5rem; transition: all 0.3s ease; }
+        .social-links a:hover { color: #667eea; transform: translateY(-3px); }
+        .copyright { font-size: 0.9rem; opacity: 0.7; }
 
-        .social-links a {
-            color: #8b949e;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: #667eea;
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
+        /* ANIMATIONS & RESPONSIVE DESIGN */
         @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes rotateGradient { 
-            0% { background-position: 0% 50%; } 
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; } 
-        }
+        @keyframes rotateGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 992px) {
-            .profile-divInner {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-            .my-info p, .my-info {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .cta-buttons, .tech-stack {
-                justify-content: center;
-            }
-            .my-photo {
-                grid-row: 1;
-            }
-            .projects-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 2rem;
-            }
+            .profile-divInner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+            .my-info p, .my-info { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .cta-buttons, .tech-stack { justify-content: center; }
+            .my-photo { grid-row: 1; }
+            .projects-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+            .experience-header {justify-content: center; text-align: center;}
         }
         
         @media (max-width: 768px) {
             body { cursor: auto; }
             .cursor { display: none; }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-buttons {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(13, 17, 23, 0.95);
-                backdrop-filter: blur(20px);
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                transform: translateY(-150%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            }
-            
-            .nav-buttons.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .nav-buttons ul {
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem;
-                gap: 1.5rem;
-            }
-            
+            .menu-toggle { display: block; }
+            .nav-buttons { position: absolute; top: 100%; left: 0; right: 0; background: rgba(13, 17, 23, 0.95); backdrop-filter: blur(20px); border-top: 1px solid rgba(255, 255, 255, 0.1); transform: translateY(-150%); opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+            .nav-buttons.active { transform: translateY(0); opacity: 1; visibility: visible; }
+            .nav-buttons ul { flex-direction: column; align-items: center; padding: 2rem; gap: 1.5rem; }
             .my-info h1 { font-size: 2.8rem; }
             .my-info .role { font-size: 1.5rem; }
             .my-photo img { width: 250px; height: 250px; }
             .my-photo::before { width: 270px; height: 270px; }
             .projects-grid { grid-template-columns: 1fr; gap: 2rem; }
             .cta-buttons { flex-direction: column; align-items: center; }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .skills-list { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1844,7 +1792,9 @@
                 <nav class="nav-buttons" id="navMenu">
                     <ul>
                         <li><a href="#about-trigger" onclick="closeMenu()">About</a></li>
-                        <li><a href="#work-trigger" onclick="closeMenu()">Work</a></li>
+                        <li><a href="#skills-trigger" onclick="closeMenu()">Skills</a></li>
+                        <li><a href="#experience-trigger" onclick="closeMenu()">Experience</a></li>
+                        <li><a href="#work-trigger" onclick="closeMenu()">Projects</a></li>
                         <li><a href="#contact-trigger" onclick="closeMenu()">Contact</a></li>
                     </ul>
                 </nav>
@@ -1862,15 +1812,13 @@
                         <div class="tech-stack">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Redux Toolkit</span>
                             <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">Tailwind CSS</span>
-                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">LLM</span>
                         </div>
                         
-                        <p>A passionate Full Stack MERN developer from Mangaluru, Karnataka 🇮🇳, specializing in building scalable, intelligent web applications. Currently focused on AI research & LLM integration, transforming complex problems into elegant, efficient solutions.</p>
+                        <p>Software Developer with 3.5+ years of experience in Full-Stack Development, MERN Stack, and Cloud Computing. Passionate about optimizing performance, implementing real-time communication, and integrating AI/LLMs to build innovative, efficient solutions that drive business impact.</p>
                         
                         <div class="cta-buttons">
                             <a href="#work-trigger" class="btn-primary">
@@ -1887,34 +1835,123 @@
                     </div>
                 </div>
             </section>
-
-            <section id="work-trigger" class="main-work">
-                <div class="work">
+            
+            <section id="skills-trigger" class="page-section bg-light-dark">
+                <div class="container">
                     <div class="section-header animate-on-scroll">
-                        <h1>Featured Projects</h1>
-                        <p>A showcase of my latest work, from full-stack MERN applications to innovative AI-powered solutions.</p>
+                        <h1>Technical Skills</h1>
+                        <p>A collection of the technologies, frameworks, and tools I use to bring ideas to life.</p>
                     </div>
-                    
-                    <div class="filter-buttons animate-on-scroll">
-                        <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
-                        <button class="filter-btn" onclick="filterProjects('mern')">MERN Stack</button>
-                        <button class="filter-btn" onclick="filterProjects('react')">React Apps</button>
-                        <button class="filter-btn" onclick="filterProjects('ai')">AI</button>
-                        <button class="filter-btn" onclick="filterProjects('frontend')">Frontend</button>
+                    <div class="skills-container animate-on-scroll">
+                        <div class="skills-column">
+                            <h3>Frontend Technologies</h3>
+                            <ul class="skills-list">
+                                <li class="skill-item"><i class="devicon-html5-plain"></i> <span>HTML5</span></li>
+                                <li class="skill-item"><i class="devicon-css3-plain"></i> <span>CSS3</span></li>
+                                <li class="skill-item"><i class="devicon-javascript-plain"></i> <span>JavaScript</span></li>
+                                <li class="skill-item"><i class="devicon-typescript-plain"></i> <span>TypeScript</span></li>
+                                <li class="skill-item"><i class="devicon-react-original"></i> <span>React.js</span></li>
+                                <li class="skill-item"><i class="devicon-redux-original"></i> <span>Redux</span></li>
+                                <li class="skill-item"><i class="devicon-tailwindcss-plain"></i> <span>Tailwind CSS</span></li>
+                                <li class="skill-item"><i class="devicon-materialui-plain"></i> <span>Material UI</span></li>
+                                <li class="skill-item"><i class="devicon-bootstrap-plain"></i> <span>Bootstrap</span></li>
+                            </ul>
+                        </div>
+                        <div class="skills-column">
+                            <h3>Backend & DevOps</h3>
+                            <ul class="skills-list">
+                                <li class="skill-item"><i class="devicon-nodejs-plain"></i> <span>Node.js</span></li>
+                                <li class="skill-item"><i class="devicon-express-original"></i> <span>Express.js</span></li>
+                                <li class="skill-item"><i class="devicon-mongodb-plain"></i> <span>MongoDB</span></li>
+                                <li class="skill-item"><i class="devicon-redis-plain"></i> <span>Redis</span></li>
+                                <li class="skill-item"><i class="fas fa-key"></i> <span>JWT</span></li>
+                                <li class="skill-item"><i class="fas fa-brain"></i> <span>LLM</span></li>
+                                <li class="skill-item"><i class="devicon-socketio-original"></i> <span>Socket.io</span></li>
+                                <li class="skill-item"><i class="devicon-amazonwebservices-original"></i> <span>AWS</span></li>
+                                <li class="skill-item"><i class="devicon-docker-plain"></i> <span>Docker</span></li>
+                                <li class="skill-item"><i class="devicon-git-plain"></i> <span>Git</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience-trigger" class="page-section bg-dark">
+                <div class="container">
+                     <div class="section-header animate-on-scroll">
+                        <h1>Work Experience</h1>
+                    </div>
+                    <div class="experience-container">
+                        <div class="experience-item animate-on-scroll">
+                            <div class="experience-header">
+                                <div>
+                                    <h3>Software Developer</h3>
+                                    <p class="experience-company">Updapt - an ESG Tech Co. | Mangalore</p>
+                                </div>
+                                <p>04/2022 - Present</p>
+                            </div>
+                            <div class="experience-details">
+                                <ul>
+                                    <li><i class="fas fa-angle-right"></i>Designed and developed full-stack web applications using the MERN stack with AWS services (Lambda, S3, Cognito, ECS) for scalable cloud deployments.</li>
+                                    <li><i class="fas fa-angle-right"></i>Implemented secure authentication and authorization using AWS Cognito and JWT, including role-based access control (RBAC) and data encryption strategies.</li>
+                                    <li><i class="fas fa-angle-right"></i>Developed real-time applications using Socket.io for live data updates and improved user interactions.</li>
+                                    <li><i class="fas fa-angle-right"></i>Automated CI/CD pipelines using AWS CodePipeline and CodeCommit for efficient deployment and version control.</li>
+                                    <li><i class="fas fa-angle-right"></i>Integrated LLM-driven features into enterprise workflows for Al-generated data suggestions, anomaly detection, and real-time validation to enhance accuracy and reduce manual effort.</li>
+                                    <li><i class="fas fa-angle-right"></i>Built and published an npm package for a TypeScript-based React component monorepo using Lerna for efficient package management and scalable frontend development.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-item animate-on-scroll">
+                            <div class="experience-header">
+                                <div>
+                                    <h3>Sr. Representative, Operations (Advisor II)</h3>
+                                    <p class="experience-company">Concentrix Daksh Services Ind Pvt Ltd | Bangalore</p>
+                                </div>
+                                <p>02/2020 - 04/2022</p>
+                            </div>
+                            <div class="experience-details">
+                                <ul>
+                                    <li><i class="fas fa-angle-right"></i>Reviewed and assessed mobile applications for compliance with Google Play Store policies, ensuring accuracy, efficiency, and security while collaborating with internal teams to improve review processes.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="experience-item animate-on-scroll">
+                            <div class="experience-header">
+                                <div>
+                                    <h3>Sales Executive</h3>
+                                    <p class="experience-company">Target Infotech Pvt Ltd | Mangalore</p>
+                                </div>
+                                <p>10/2018 - 01/2020</p>
+                            </div>
+                            <div class="experience-details">
+                                <ul>
+                                    <li><i class="fas fa-angle-right"></i>Developed and managed client relationships, conducted market research, and promoted company products/services to drive sales growth and optimize business strategies.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="work-trigger" class="page-section bg-light-dark">
+                <div class="container">
+                    <div class="section-header animate-on-scroll">
+                        <h1>Projects</h1>
+                        <p>A selection of projects that showcase my skills in creating robust, scalable, and user-friendly applications.</p>
                     </div>
                     
                     <div class="projects-grid" id="projectsGrid">
                         
                         <div class="project-card animate-on-scroll featured" data-category="mern fullstack react">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
-                                    <div class="project-title-short">🌟 Team FAME Revolution</div>
-                                    <div class="project-tech-preview">Full-Stack Community Platform</div>
-                                </div>
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
+                                <div class="project-title-short">🌟 Elite Commerce & Investment Suite</div>
+                                <div class="project-tech-preview">Team FAME - Full-Stack Platform</div>
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">Team FAME Revolution Platform</h3>
-                                <p class="project-description">A comprehensive full-stack platform empowering individuals through education, community engagement, and financial growth. Features secure authentication, payment processing with Razorpay, admin panel, e-commerce functionality, and AWS cloud deployment.</p>
+                                <h3 class="project-title">Elite Commerce & Investment Suite (Team FAME)</h3>
+                                <p class="project-description">An all-in-one digital platform integrating E-commerce, Gold Savings, and Event Management. Features secure payments with Razorpay, an admin dashboard, and AWS cloud deployment for seamless user experiences.</p>
                                 <div class="project-tech">
                                     <span class="tech-pill">React 18</span>
                                     <span class="tech-pill">TypeScript</span>
@@ -1922,8 +1959,7 @@
                                     <span class="tech-pill">MongoDB</span>
                                     <span class="tech-pill">Material-UI</span>
                                     <span class="tech-pill">Razorpay</span>
-                                    <span class="tech-pill">AWS S3</span>
-                                    <span class="tech-pill">Docker</span>
+                                    <span class="tech-pill">AWS</span>
                                 </div>
                                 <div class="project-links">
                                     <a href="https://www.team-fame.com/" target="_blank" class="project-link">
@@ -1937,22 +1973,19 @@
                         </div>
 
                         <div class="project-card animate-on-scroll" data-category="react fullstack ai">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-                                    <div class="project-title-short">🛍️ ModernShop</div>
-                                    <div class="project-tech-preview">AI E-commerce Platform</div>
-                                </div>
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                <div class="project-title-short">🛍️ ModernShop</div>
+                                <div class="project-tech-preview">AI E-commerce Platform</div>
                             </div>
                             <div class="project-content">
                                 <h3 class="project-title">ModernShop - AI-Powered E-Commerce</h3>
-                                <p class="project-description">A sophisticated e-commerce platform featuring an intelligent AI chatbot for product recommendations, shopping assistance, and customer support. Built with modern React architecture and state management.</p>
+                                <p class="project-description">A sophisticated e-commerce platform featuring an intelligent AI chatbot for product recommendations and customer support, built with a modern React architecture and state management.</p>
                                 <div class="project-tech">
                                     <span class="tech-pill">React</span>
                                     <span class="tech-pill">TypeScript</span>
                                     <span class="tech-pill">Redux Toolkit</span>
                                     <span class="tech-pill">Tailwind CSS</span>
                                     <span class="tech-pill">AI Chatbot</span>
-                                    <span class="tech-pill">Framer Motion</span>
                                 </div>
                                 <div class="project-links">
                                     <a href="https://modern-ecommerce-chatbot.vercel.app/" target="_blank" class="project-link">
@@ -1966,15 +1999,13 @@
                         </div>
 
                         <div class="project-card animate-on-scroll" data-category="mern fullstack react">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #48c6ef, #6f86d6);">
-                                    <div class="project-title-short">🛒 MERN E-commerce</div>
-                                    <div class="project-tech-preview">Full-Stack Shop</div>
-                                </div>
+                            <div class="project-image-placeholder" style="background: linear-gradient(135deg, #48c6ef, #6f86d6);">
+                                <div class="project-title-short">🛒 MERN E-commerce</div>
+                                <div class="project-tech-preview">Full-Stack Shop</div>
                             </div>
                             <div class="project-content">
                                 <h3 class="project-title">MERN E-commerce Platform</h3>
-                                <p class="project-description">A full-featured e-commerce application built with the MERN stack. Features user authentication, product management, shopping cart, order tracking, and admin dashboard with complete CRUD operations.</p>
+                                <p class="project-description">A full-featured e-commerce application built with the MERN stack. Features user authentication, product management, shopping cart, and a complete admin dashboard for CRUD operations.</p>
                                 <div class="project-tech">
                                     <span class="tech-pill">MongoDB</span>
                                     <span class="tech-pill">Express.js</span>
@@ -1990,58 +2021,6 @@
                             </div>
                         </div>
 
-                        <div class="project-card animate-on-scroll" data-category="mern fullstack react">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
-                                    <div class="project-title-short">🏠 Real Estate</div>
-                                    <div class="project-tech-preview">MERN + Firebase</div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Real Estate Marketplace</h3>
-                                <p class="project-description">A modern real estate platform built with MERN stack and Firebase. Features Google OAuth authentication, advanced property search, listing management, and responsive design for seamless user experience.</p>
-                                <div class="project-tech">
-                                    <span class="tech-pill">React</span>
-                                    <span class="tech-pill">Node.js</span>
-                                    <span class="tech-pill">MongoDB</span>
-                                    <span class="tech-pill">Firebase</span>
-                                    <span class="tech-pill">TailwindCSS</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/Lavin-kulal/Real-estate-website" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> View Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card animate-on-scroll" data-category="frontend">
-                            <div class="project-image">
-                                <div class="project-image-placeholder" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
-                                    <div class="project-title-short">💼 Portfolio</div>
-                                    <div class="project-tech-preview">Personal Showcase</div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Dynamic Portfolio Website</h3>
-                                <p class="project-description">A modern, animated portfolio showcasing projects and skills. Features custom cursor effects, scroll animations, project filtering, and responsive design with elegant UI/UX.</p>
-                                <div class="project-tech">
-                                    <span class="tech-pill">HTML5</span>
-                                    <span class="tech-pill">CSS3</span>
-                                    <span class="tech-pill">JavaScript</span>
-                                    <span class="tech-pill">Animations</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://lavin-kulal.github.io/portfolio-site/" target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i> Live Demo
-                                    </a>
-                                    <a href="https://github.com/Lavin-kulal/portfolio-site" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i> Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
             </section>
@@ -2068,7 +2047,7 @@
                     </a>
                 </div>
                 <p class="copyright">
-                    © 2025 Laveen Kumar | Full Stack MERN Wizard 🧙‍♂️ | Built with ❤️ and lots of ☕
+                    © 2024 Laveen Kumar | Full Stack MERN Wizard 🧙‍♂️ | Built with ❤️ and lots of ☕
                     <br>
                     <strong>Email:</strong> laveenk0032@gmail.com | 
                     <strong>Location:</strong> Mangaluru, Karnataka, India 🇮🇳
@@ -2079,12 +2058,15 @@
 
     <script>
         const cursor = document.querySelector('.cursor');
-        if (cursor) {
+        if (cursor && !/Mobi|Android/i.test(navigator.userAgent)) {
             document.addEventListener('mousemove', e => {
                 cursor.style.left = e.pageX + 'px';
                 cursor.style.top = e.pageY + 'px';
             });
+        } else if (cursor) {
+            cursor.style.display = 'none';
         }
+
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
